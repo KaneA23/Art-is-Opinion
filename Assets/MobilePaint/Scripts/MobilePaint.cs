@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Tobii.Gaming;
 
 
 
@@ -31,6 +32,9 @@ namespace unitycoder_MobilePaint
     [RequireComponent(typeof(MeshRenderer))]
     public class MobilePaint : MonoBehaviour
     {
+        List<GazePoint> gazePoint;
+        public bool isEyeTracker = true;
+        bool isGazing = true;
         [Header("Mouse or Touch")]
         public bool enableTouch = false;
 
@@ -231,6 +235,7 @@ namespace unitycoder_MobilePaint
 
             StartupValidation();
             InitializeEverything();
+            gazePoint = new List<GazePoint>();
         }
 
 
@@ -484,13 +489,228 @@ namespace unitycoder_MobilePaint
 
         } // InitializeEverything
 
+        void EyeTracker()
+        {
+            GazePoint point = TobiiAPI.GetGazePoint();
 
+            gazePoint.Add(point);
+            if (gazePoint.Count > 5)
+            {
+                gazePoint.RemoveAt(0);
+            }
+
+            Vector2 overallPos = new Vector2(0, 0);
+
+            IEnumerable<GazePoint> points = TobiiAPI.GetGazePointsSince(gazePoint[0]);
+
+            foreach (GazePoint pos in points)
+            {
+                if(new Vector2(pos.Screen.x - gazePoint[0].Screen.x, pos.Screen.y - gazePoint[0].Screen.y).magnitude < 30)
+                {
+                    isGazing = true;
+                }
+                else
+                {
+                    isGazing = false;
+                    break;
+                }
+            }
+
+            if(isGazing && gazePoint.Count > 3)
+            {
+                foreach (GazePoint pos in points)
+                {
+                    overallPos += pos.Screen;
+                }
+                overallPos /= gazePoint.Count;
+                // TEST: Undo key for desktop
+                if (undoEnabled && Input.GetKeyDown("u")) DoUndo();
+
+                // mouse is over UI element? then dont paint
+                if (eventSystem.IsPointerOverGameObject()) return;
+                if (eventSystem.currentSelectedGameObject != null) return;
+
+                // catch first mousedown
+                if (Input.GetKeyDown("space"))
+                {
+                    if (hideUIWhilePainting && isUIVisible) HideUI();
+
+                    // when starting, grab undo buffer first
+                    if (undoEnabled) GrabUndoBufferNow();
+
+                    // if lock area is used, we need to take full area before painting starts
+                    if (useLockArea)
+                    {
+                        if (!Physics.Raycast(cam.ScreenPointToRay(overallPos), out hit, Mathf.Infinity, paintLayerMask)) return;
+                        CreateAreaLockMask((int)(hit.textureCoord.x * texWidth), (int)(hit.textureCoord.y * texHeight));
+                    }
+                }
+
+                // left button is held down, draw
+                //if (Input.GetButton(0))
+                if (Input.GetKey("space"))
+                {
+                    // Only if we hit something, then we continue
+                    if (!Physics.Raycast(cam.ScreenPointToRay(overallPos), out hit, Mathf.Infinity, paintLayerMask)) { wentOutside = true; return; }
+
+                    pixelUVOld = pixelUV; // take previous value, so can compare them
+                    pixelUV = hit.textureCoord;
+                    pixelUV.x *= texWidth;
+                    pixelUV.y *= texHeight;
+
+                    if (wentOutside) { pixelUVOld = pixelUV; wentOutside = false; }
+
+
+                    // lets paint where we hit
+                    switch (drawMode)
+                    {
+                        case DrawMode.Default: // brush
+                            DrawCircle((int)pixelUV.x, (int)pixelUV.y);
+                            break;
+
+                        case DrawMode.Pattern:
+                            DrawPatternCircle((int)pixelUV.x, (int)pixelUV.y);
+                            break;
+
+                        case DrawMode.CustomBrush:
+                            DrawCustomBrush((int)pixelUV.x, (int)pixelUV.y);
+                            break;
+
+                        case DrawMode.FloodFill:
+                            if (pixelUVOld == pixelUV) break;
+                            CallFloodFill((int)pixelUV.x, (int)pixelUV.y);
+                            break;
+
+                        case DrawMode.ShapeLines:
+                            if (snapLinesToGrid)
+                            {
+                                DrawShapeLinePreview(SnapToGrid((int)pixelUV.x), SnapToGrid((int)pixelUV.y));
+                            }
+                            else
+                            {
+
+                                DrawShapeLinePreview((int)pixelUV.x, (int)pixelUV.y);
+                            }
+                            break;
+
+                        case DrawMode.Eraser:
+                            if (eraserMode == EraserMode.Default)
+                            {
+                                EraseWithImage((int)pixelUV.x, (int)pixelUV.y);
+                            }
+                            else
+                            {
+                                EraseWithBackgroundColor((int)pixelUV.x, (int)pixelUV.y);
+                            }
+                            break;
+
+
+                        default: // unknown DrawMode
+                            Debug.LogError("Unknown drawMode");
+                            break;
+                    }
+
+                    textureNeedsUpdate = true;
+                }
+
+
+                if (Input.GetKeyDown("space"))
+                {
+                    // take this position as start position
+                    if (!Physics.Raycast(cam.ScreenPointToRay(overallPos), out hit, Mathf.Infinity, paintLayerMask)) return;
+
+                    pixelUVOld = pixelUV;
+                }
+
+
+                // check distance from previous drawing point and connect them with DrawLine
+                //			if (connectBrushStokes && Vector2.Distance(pixelUV,pixelUVOld)>brushSize)
+                if (connectBrushStokes && textureNeedsUpdate)
+                {
+                    switch (drawMode)
+                    {
+                        case DrawMode.Default: // drawing
+                            DrawLine(pixelUVOld, pixelUV);
+                            break;
+
+                        case DrawMode.CustomBrush:
+                            DrawLineWithBrush(pixelUVOld, pixelUV);
+                            break;
+
+                        case DrawMode.Pattern:
+                            DrawLineWithPattern(pixelUVOld, pixelUV);
+                            break;
+
+                        case DrawMode.Eraser:
+                            if (eraserMode == EraserMode.Default)
+                            {
+                                EraseWithImageLine(pixelUVOld, pixelUV);
+                            }
+                            else
+                            {
+                                EraseWithBackgroundColorLine(pixelUVOld, pixelUV);
+                            }
+                            break;
+
+                        default: // other modes
+                            break;
+                    }
+                    pixelUVOld = pixelUV;
+                    textureNeedsUpdate = true;
+                }
+
+                // left mouse button released
+                if (Input.GetKeyDown("space"))
+                {
+                    // calculate area size
+                    if (getAreaSize && useLockArea && useMaskLayerOnly && drawMode != DrawMode.FloodFill)
+                    {
+                        LockAreaFillWithThresholdMaskOnlyGetArea(initialX, initialY, true);
+                    }
+
+                    // end shape line here
+                    if (drawMode == DrawMode.ShapeLines)
+                    {
+                        haveStartedLine = false;
+
+                        // hide preview line
+                        lineRenderer.SetPosition(0, Vector3.one * 99999);
+                        lineRenderer.SetPosition(1, Vector3.one * 99999);
+                        previewLineCircleStart.position = Vector3.one * 99999;
+                        previewLineCircleEnd.position = Vector3.one * 99999;
+
+                        // draw actual line from start to current pos
+                        if (snapLinesToGrid)
+                        {
+                            Vector2 extendLine = (pixelUV - new Vector2((float)firstClickX, (float)firstClickY)).normalized * (brushSize * 0.25f);
+                            DrawLine(firstClickX - (int)extendLine.x, firstClickY - (int)extendLine.y, SnapToGrid((int)pixelUV.x + (int)extendLine.x), SnapToGrid((int)pixelUV.y + (int)extendLine.y));
+
+                            //DrawLine(firstClickX,firstClickY,SnapToGrid((int)pixelUV.x),SnapToGrid((int)pixelUV.y));
+                        }
+                        else
+                        {
+
+                            // need to extend line to avoid too short start/end
+                            Vector2 extendLine = (pixelUV - new Vector2((float)firstClickX, (float)firstClickY)).normalized * (brushSize * 0.25f);
+                            DrawLine(firstClickX - (int)extendLine.x, firstClickY - (int)extendLine.y, (int)pixelUV.x + (int)extendLine.x, (int)pixelUV.y + (int)extendLine.y);
+                        }
+                        textureNeedsUpdate = true;
+                    }
+
+                    if (hideUIWhilePainting && !isUIVisible) ShowUI(); // show UI since we stopped drawing
+                }
+            }
+        }
 
         // *** MAINLOOP ***
         void Update()
         {
-          
-            if (enableTouch)
+            
+            if(isEyeTracker)
+            {               
+                EyeTracker();
+            }
+            else if (enableTouch)
             {
                 TouchPaint();
             }
