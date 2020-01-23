@@ -36,6 +36,7 @@ namespace unitycoder_MobilePaint
         List<GazePoint> gazePoint;  // A list of co-ordinates where the player is looking
         public bool isEyeTracker = true;    // Whether the player is using Tobii eye-tracker, Turn false to test without eye-tracker
         bool isGazing = true;   // Used to say whether the player is looking at a point long enough
+        Vector2 filteredPoint;
 
         [Header("Mouse or Touch")]
         public bool enableTouch = false;
@@ -484,38 +485,41 @@ namespace unitycoder_MobilePaint
         /// </summary>
         void EyeTracker()
         {
-            GazePoint point = TobiiAPI.GetGazePoint();  // Fetches the current co-ordinates on the screen that the player is looking at via the eye-tracker
+            
+            Vector2 gazePoint = TobiiAPI.GetGazePoint().Screen;  // Fetches the current co-ordinates on the screen that the player is looking at via the eye-tracker
+            filteredPoint = Vector2.Lerp(filteredPoint, gazePoint, 0.5f);
 
-            gazePoint.Add(point);
-            if (gazePoint.Count > 5)    // Stops the list from getting too large
+            //gazePoint.Add(point);
+            //if (gazePoint.Count > 5)    // Stops the list from getting too large
+            //{
+            //    gazePoint.RemoveAt(0);  // Removes the oldest co-ordinate in the list (the first item)
+            //}
+
+            //Vector2 overallPos = new Vector2(0, 0);
+
+            //IEnumerable<GazePoint> points = TobiiAPI.GetGazePointsSince(gazePoint[0]);
+
+            //foreach (GazePoint pos in points)
+            //{
+            //    if (new Vector2(pos.Screen.x - gazePoint[0].Screen.x, pos.Screen.y - gazePoint[0].Screen.y).magnitude < 30)
+            //    {
+            //        isGazing = true;
+            //    }
+            //    else
+            //    {
+            //        isGazing = false;
+            //        break;
+            //    }
+            //}
+
+
+            if (isGazing)
             {
-                gazePoint.RemoveAt(0);  // Removes the oldest co-ordinate in the list (the first item)
-            }
-
-            Vector2 overallPos = new Vector2(0, 0);
-
-            IEnumerable<GazePoint> points = TobiiAPI.GetGazePointsSince(gazePoint[0]);
-
-            foreach (GazePoint pos in points)
-            {
-                if (new Vector2(pos.Screen.x - gazePoint[0].Screen.x, pos.Screen.y - gazePoint[0].Screen.y).magnitude < 30)
-                {
-                    isGazing = true;
-                }
-                else
-                {
-                    isGazing = false;
-                    break;
-                }
-            }
-
-            if (isGazing && gazePoint.Count > 3)
-            {
-                foreach (GazePoint pos in points)
-                {
-                    overallPos += pos.Screen;
-                }
-                overallPos /= gazePoint.Count;
+                //foreach (GazePoint pos in points)
+                //{
+                //    overallPos += pos.Screen;
+                //}
+                //overallPos /= gazePoint.Count;
                 // TEST: Undo key for desktop
                 if (undoEnabled && Input.GetKeyDown("u")) DoUndo();
 
@@ -534,7 +538,7 @@ namespace unitycoder_MobilePaint
                     // if lock area is used, we need to take full area before painting starts
                     if (useLockArea)
                     {
-                        if (!Physics.Raycast(cam.ScreenPointToRay(overallPos), out hit, Mathf.Infinity, paintLayerMask)) return;
+                        if (!Physics.Raycast(cam.ScreenPointToRay(filteredPoint), out hit, Mathf.Infinity, paintLayerMask)) return;
 
                         CreateAreaLockMask((int)(hit.textureCoord.x * texWidth), (int)(hit.textureCoord.y * texHeight));
                     }
@@ -545,7 +549,7 @@ namespace unitycoder_MobilePaint
                 if (Input.GetKey("space"))
                 {
                     // Only if we hit something, then we continue
-                    if (!Physics.Raycast(cam.ScreenPointToRay(overallPos), out hit, Mathf.Infinity, paintLayerMask)) { wentOutside = true; return; }
+                    if (!Physics.Raycast(cam.ScreenPointToRay(filteredPoint), out hit, Mathf.Infinity, paintLayerMask)) { wentOutside = true; return; }
 
                     pixelUVOld = pixelUV; // take previous value, so can compare them
                     pixelUV = hit.textureCoord;
@@ -609,7 +613,7 @@ namespace unitycoder_MobilePaint
                 if (Input.GetKeyDown("space"))
                 {
                     // take this position as start position
-                    if (!Physics.Raycast(cam.ScreenPointToRay(overallPos), out hit, Mathf.Infinity, paintLayerMask)) return;
+                    if (!Physics.Raycast(cam.ScreenPointToRay(filteredPoint), out hit, Mathf.Infinity, paintLayerMask)) return;
 
                     pixelUVOld = pixelUV;
                 }
