@@ -286,43 +286,43 @@
     <None Include="Assets\Tobii\DemoScenes\Shaders\Highlight\Highlight.shader" />
     <None Include="Assets\Tobii\DemoScenes\Shaders\PostProcessing\Resources\Shaders\TAA.cginc" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>N:/Year 2/CT5051/Art Is Opinion/Art-is-Opinion/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>N:/ArtIsOpinion/Art-is-Opinion/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.multiplayer-hlapi.Editor">
-      <HintPath>N:/Year 2/CT5051/Art Is Opinion/Art-is-Opinion/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
+      <HintPath>N:/ArtIsOpinion/Art-is-Opinion/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>N:/Year 2/CT5051/Art Is Opinion/Art-is-Opinion/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>N:/ArtIsOpinion/Art-is-Opinion/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>N:/Year 2/CT5051/Art Is Opinion/Art-is-Opinion/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>N:/ArtIsOpinion/Art-is-Opinion/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>N:/Year 2/CT5051/Art Is Opinion/Art-is-Opinion/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>N:/ArtIsOpinion/Art-is-Opinion/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.multiplayer-weaver.Editor">
-      <HintPath>N:/Year 2/CT5051/Art Is Opinion/Art-is-Opinion/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
+      <HintPath>N:/ArtIsOpinion/Art-is-Opinion/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.XR.LegacyInputHelpers">
-      <HintPath>N:/Year 2/CT5051/Art Is Opinion/Art-is-Opinion/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+      <HintPath>N:/ArtIsOpinion/Art-is-Opinion/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.SpatialTracking">
-      <HintPath>N:/Year 2/CT5051/Art Is Opinion/Art-is-Opinion/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
+      <HintPath>N:/ArtIsOpinion/Art-is-Opinion/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
-      <HintPath>N:/Year 2/CT5051/Art Is Opinion/Art-is-Opinion/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
+      <HintPath>N:/ArtIsOpinion/Art-is-Opinion/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>N:/Year 2/CT5051/Art Is Opinion/Art-is-Opinion/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>N:/ArtIsOpinion/Art-is-Opinion/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>N:/Year 2/CT5051/Art Is Opinion/Art-is-Opinion/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>N:/ArtIsOpinion/Art-is-Opinion/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.XR.LegacyInputHelpers">
-      <HintPath>N:/Year 2/CT5051/Art Is Opinion/Art-is-Opinion/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
+      <HintPath>N:/ArtIsOpinion/Art-is-Opinion/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.multiplayer-hlapi.Runtime">
-      <HintPath>N:/Year 2/CT5051/Art Is Opinion/Art-is-Opinion/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
+      <HintPath>N:/ArtIsOpinion/Art-is-Opinion/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -511,16 +511,16 @@
       <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/VuforiaSupport/Managed/Runtime/Vuforia.UnityExtensions.dll</HintPath>
     </Reference>
     <Reference Include="Tobii.GameIntegration.Net">
-      <HintPath>N:/Year 2/CT5051/Art Is Opinion/Art-is-Opinion/Assets/Tobii/Plugins/Tobii.GameIntegration.Net.dll</HintPath>
+      <HintPath>N:/ArtIsOpinion/Art-is-Opinion/Assets/Tobii/Plugins/Tobii.GameIntegration.Net.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>N:/Year 2/CT5051/Art Is Opinion/Art-is-Opinion/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>N:/ArtIsOpinion/Art-is-Opinion/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>N:/Year 2/CT5051/Art Is Opinion/Art-is-Opinion/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>N:/ArtIsOpinion/Art-is-Opinion/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>N:/Year 2/CT5051/Art Is Opinion/Art-is-Opinion/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>N:/ArtIsOpinion/Art-is-Opinion/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
