@@ -15,6 +15,7 @@ namespace unitycoder_MobilePaint
 
         MobilePaint mobilePaint;
 
+
         // Start is called before the first frame update
         void Start()
         {
@@ -24,10 +25,6 @@ namespace unitycoder_MobilePaint
             currentBrushSize = 20;
             mobilePaint.SetBrushSize(currentBrushSize);
         }
-
-
-        // Update is called once per frame
-
 
 
         // Changes the size of the brush by 5
