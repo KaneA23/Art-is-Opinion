@@ -52,7 +52,7 @@ public class DialogueManager : MonoBehaviour
         Debug.Log(sentence);
     }
 
-    IEnumerator TypeSentence (string sentence)
+    IEnumerator TypeSentence(string sentence)
     {
         dialogueText.text = "";
         foreach (char letter in sentence.ToCharArray())
