@@ -13,6 +13,7 @@ using UnityEngine;
 public class SaveImageScript : MonoBehaviour
 {
     public RenderTexture SaveTexture;
+    string filePath = Application.dataPath + "/Resources/Images";
 
 
     /// <summary>
@@ -31,9 +32,8 @@ public class SaveImageScript : MonoBehaviour
     private IEnumerator CoSave()
     {
         yield return new WaitForEndOfFrame();
-        Debug.Log(Application.dataPath + "/SavedImage/savedImage.png");
-
-        var folder = Directory.CreateDirectory(Application.dataPath + "/SavedImage");   // Creates the folder that stores the image
+        
+        var folder = Directory.CreateDirectory(filePath);   // Creates the folder that stores the image
 
         RenderTexture.active = SaveTexture;
 
@@ -43,6 +43,8 @@ public class SaveImageScript : MonoBehaviour
 
         var saveData = texture2D.EncodeToPNG(); // Turns the image seen in the SaveCamera to a PNG
 
-        File.WriteAllBytes(Application.dataPath + "/SavedImage/savedImage.png", saveData);  // Saves the .PNG to the desired directory
+        File.WriteAllBytes(filePath + "/SavedImage.png", saveData);  // Saves the .PNG to the desired directory
+        
+        Debug.Log(filePath + "/SavedImage.png");
     }
 }
