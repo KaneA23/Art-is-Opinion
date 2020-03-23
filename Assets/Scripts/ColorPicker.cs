@@ -4,9 +4,10 @@ public class ColorPicker : MonoBehaviour
 {
     public static Color newColor { get; private set; }
 
-    //[SerializeField]
+    [SerializeField]
 
     //  private Renderer selectedColorPreview;
+
 
     private void Update()
     {

@@ -1,38 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using Tobii.Gaming;
 
 namespace unitycoder_MobilePaint
 {
 
     public class BrushSizeScript : MonoBehaviour
     {
-        public Button increaseSizeButton;
-        public Button decreaseSizeButton;
-        Vector3 increasePos;
-        Vector3 decreasePos;
-        Rect increaseRect;
-        Rect decreaseRect;
-        float increaseXMin;
-        float increaseXMax;
-        float increaseYMin;
-        float increaseYMax;
-        float decreaseXMin;
-        float decreaseXMax;
-        float decreaseYMin;
-        float decreaseYMax;
         int currentBrushSize;
-
-        float timeBeforeClick;
-        float timeBetweenClicks = 1;
 
         // Size boundaries for brush
         int minBrushSize = 10;
         int maxBrushSize = 64;
-        Vector2 filteredPoint;
+
         MobilePaint mobilePaint;
+
 
         // Start is called before the first frame update
         void Start()
@@ -42,45 +24,8 @@ namespace unitycoder_MobilePaint
             // Sets the Default Brush Size
             currentBrushSize = 20;
             mobilePaint.SetBrushSize(currentBrushSize);
-
-            timeBeforeClick = timeBetweenClicks;
         }
 
-        private void Update()
-        {
-            timeBetweenClicks -= Time.deltaTime;
-
-            increasePos = increaseSizeButton.transform.position;
-            decreasePos = decreaseSizeButton.transform.position;
-            increaseRect = increaseSizeButton.GetComponent<RectTransform>().rect;
-            decreaseRect = decreaseSizeButton.GetComponent<RectTransform>().rect;
-
-            increaseXMin = increaseRect.xMin;
-            increaseXMax = increaseRect.xMax;
-            increaseYMin = increaseRect.yMin;
-            increaseYMax = increaseRect.yMax;
-
-            decreaseXMin = decreaseRect.xMin;
-            decreaseXMax = decreaseRect.xMax;
-            decreaseYMin = decreaseRect.yMin;
-            decreaseYMax = decreaseRect.yMax;
-
-            Vector2 gazePoint = TobiiAPI.GetGazePoint().Screen;  // Fetches the current co-ordinates on the screen that the player is looking at via the eye-tracker           
-            filteredPoint = Vector2.Lerp(filteredPoint, gazePoint, 0.5f);
-
-            if ((increasePos.x + increaseXMin) < filteredPoint.x && filteredPoint.x < (increasePos.x + increaseXMax) && (increasePos.y + increaseYMin) < filteredPoint.y && filteredPoint.y < (increasePos.y + increaseYMax) && timeBetweenClicks <= 0)
-            {
-                IncreaseBrushSize();
-                timeBeforeClick = timeBetweenClicks;
-            }
-
-            if ( (decreasePos.x + decreaseXMin) < filteredPoint.x && filteredPoint.x < (decreasePos.x + decreaseXMax) && (decreasePos.y + decreaseYMin) < filteredPoint.y && filteredPoint.y < (decreasePos.y + decreaseYMax) && timeBetweenClicks <= 0)
-            {
-                DecreaseBrushSize();
-                timeBeforeClick = timeBetweenClicks;
-            }
-
-        }
 
         // Changes the size of the brush by 5
         public void IncreaseBrushSize()
