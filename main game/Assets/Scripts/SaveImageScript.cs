@@ -9,11 +9,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class SaveImageScript : MonoBehaviour
 {
     public RenderTexture SaveTexture;
-    string filePath = Application.dataPath + "/Resources/Images";
+    string filePath;
 
 
     /// <summary>
@@ -21,6 +23,8 @@ public class SaveImageScript : MonoBehaviour
     /// </summary>
     public void Save()
     {
+        filePath = Application.dataPath + "/Resources/Images";
+
         StartCoroutine(CoSave());
     }
 
@@ -46,5 +50,8 @@ public class SaveImageScript : MonoBehaviour
         File.WriteAllBytes(filePath + "/SavedImage.png", saveData);  // Saves the .PNG to the desired directory
         
         Debug.Log(filePath + "/SavedImage.png");
+
+
+        SceneManager.LoadScene("PracticeScene2", LoadSceneMode.Single);
     }
 }
