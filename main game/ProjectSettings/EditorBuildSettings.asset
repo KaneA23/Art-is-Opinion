@@ -5,9 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: 
-    guid: 99c9720ab356a0642a771bea13969a05
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Tobii/DemoScenes/01_GazePointData.unity
     guid: 25d19715294d17e429777a13a4b2af44
@@ -35,4 +35,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Tobii/DemoScenes/07_DynamicLightAdaptationExample.unity
     guid: 1bfee50fbac9ba9478556c9de3fe6e41
+  - enabled: 1
+    path: Assets/Scenes/scene_MobilePaint_NewUI_SoftBrush.unity
+    guid: 84fd8be10be236843896adbbae908e3a
+  - enabled: 1
+    path: Assets/Scenes/PracticeScene2.unity
+    guid: 610f32cc628a2d043b29838c7f7f390d
   m_configObjects: {}

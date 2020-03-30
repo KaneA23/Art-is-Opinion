@@ -16,6 +16,27 @@ public class SaveImageScript : MonoBehaviour
 {
     public RenderTexture SaveTexture;
     string filePath;
+    int numOfPNGs = 0;
+
+
+    public void Start()
+    {
+        filePath = Application.dataPath + "/Resources/Images";
+
+        DirectoryInfo info = new DirectoryInfo(filePath);
+        FileInfo[] fileInfo = info.GetFiles();
+
+        foreach (FileInfo file in fileInfo)
+        {
+            Debug.Log("all folders:" + file);
+            if (file.Extension == ".png")
+            {
+                numOfPNGs++;
+                Debug.Log(file);
+            }
+            
+        }
+    }
 
 
     /// <summary>
@@ -23,8 +44,6 @@ public class SaveImageScript : MonoBehaviour
     /// </summary>
     public void Save()
     {
-        filePath = Application.dataPath + "/Resources/Images";
-
         StartCoroutine(CoSave());
     }
 
@@ -47,7 +66,7 @@ public class SaveImageScript : MonoBehaviour
 
         var saveData = texture2D.EncodeToPNG(); // Turns the image seen in the SaveCamera to a PNG
 
-        File.WriteAllBytes(filePath + "/SavedImage.png", saveData);  // Saves the .PNG to the desired directory
+        File.WriteAllBytes(filePath + "/SavedImage"+numOfPNGs+".png", saveData);  // Saves the .PNG to the desired directory
         
         Debug.Log(filePath + "/SavedImage.png");
 
