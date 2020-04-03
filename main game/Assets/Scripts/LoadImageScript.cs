@@ -1,4 +1,12 @@
-﻿using System.Collections;
+﻿/// <summary>
+/// Name:           LoadImageScript.css
+/// Purpose:        To load a .PNG image from resource folder in assets into a scene
+/// Author:         Kane Adams
+/// Date Created:   22/03/2020
+/// </summary>
+
+// Namespaces
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,13 +15,15 @@ using System.IO;
 
 public class LoadImageScript : MonoBehaviour
 {
+    public int numOfPNGs = 0;   // Used to load the last PNG in the folder (loads "SavedImage" + numOfPNGs)
+    
     Texture2D myTexture;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        //string filePath = Application.dataPath + "/Resources/Images/SavedImage.png";
+        string filePath = Application.dataPath + "/Resources/Images";   // Where the images are saved
         //byte[] imageData = File.ReadAllBytes(filePath);
 
         //myTexture = new Texture2D(1, 1);
@@ -21,10 +31,31 @@ public class LoadImageScript : MonoBehaviour
 
         //GetComponent<Renderer>().material.mainTexture = myTexture;
 
-        myTexture = Resources.Load("Images/SavedImage") as Texture2D;
 
+        // Stores the info on what is saved in the filepath to an array
+        DirectoryInfo info = new DirectoryInfo(filePath);
+        FileInfo[] fileInfo = info.GetFiles();
+
+        // Goes through each file within the array, if the file is a .png, numOfPNGs increments
+        foreach (FileInfo file in fileInfo)
+        {
+            Debug.Log("all folders:" + file);
+            if (file.Extension == ".png")
+            {
+                numOfPNGs++;
+                Debug.Log(file);
+            }
+        }
+
+        string imageToLoad = ("SavedImage" + numOfPNGs);    // Stores the name of the folder to be opened as a string
+        Debug.Log(imageToLoad);
+
+        myTexture = Resources.Load("Images/" + (string)imageToLoad) as Texture2D;   // Finds the file that contains the specified name
+
+        // Changes the texture of the image GameObject to be the SavedImage
         GameObject rawImage = GameObject.Find("RawImage");
         rawImage.GetComponent<RawImage>().texture = myTexture;
+        Debug.Log("Loaded Image");
     }
 
 
