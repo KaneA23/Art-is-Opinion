@@ -16,7 +16,7 @@ using System.IO;
 public class LoadImageScript : MonoBehaviour
 {
     public int numOfPNGs = 0;   // Used to load the last PNG in the folder (loads "SavedImage" + numOfPNGs)
-    
+
     Texture2D myTexture;
 
 
@@ -24,13 +24,6 @@ public class LoadImageScript : MonoBehaviour
     void Start()
     {
         string filePath = Application.dataPath + "/Resources/Images";   // Where the images are saved
-        //byte[] imageData = File.ReadAllBytes(filePath);
-
-        //myTexture = new Texture2D(1, 1);
-        //myTexture.LoadImage(/*imageData*/ConvertToPng(filePath));
-
-        //GetComponent<Renderer>().material.mainTexture = myTexture;
-
 
         // Stores the info on what is saved in the filepath to an array
         DirectoryInfo info = new DirectoryInfo(filePath);
@@ -47,15 +40,10 @@ public class LoadImageScript : MonoBehaviour
             }
         }
 
-        string imageToLoad = ("SavedImage" + numOfPNGs);    // Stores the name of the folder to be opened as a string
+        string imageToLoad = ("SavedImage" + numOfPNGs);  // Stores the name of the folder to be opened as a string
         Debug.Log(imageToLoad);
 
-        myTexture = Resources.Load("Images/" + (string)imageToLoad) as Texture2D;   // Finds the file that contains the specified name
-
-        // Changes the texture of the image GameObject to be the SavedImage
-        GameObject rawImage = GameObject.Find("RawImage");
-        rawImage.GetComponent<RawImage>().texture = myTexture;
-        Debug.Log("Loaded Image");
+        LoadImage(imageToLoad);
     }
 
 
@@ -77,4 +65,15 @@ public class LoadImageScript : MonoBehaviour
 
     //    return imageBytes;
     //}
+
+
+    void LoadImage(string a_ImageToLoad)
+    {
+        myTexture = Resources.Load("Images/" + a_ImageToLoad) as Texture2D;   // Finds the file that contains the specified name
+
+        // Changes the texture of the image GameObject to be the SavedImage
+        GameObject rawImage = GameObject.Find("RawImage");
+        rawImage.GetComponent<RawImage>().texture = myTexture;
+        Debug.Log("Loaded Image");
+    }
 }
