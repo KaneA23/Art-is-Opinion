@@ -29,6 +29,18 @@ TextureImporter:
   - first:
       213: 8465270892762914595
     second: icons 1_8
+  - first:
+      213: -2657373798052070942
+    second: icons 1_9
+  - first:
+      213: -642571999484012183
+    second: icons 1_10
+  - first:
+      213: 1999359064800649042
+    second: icons 1_11
+  - first:
+      213: -5872384803205561515
+    second: icons 1_12
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -295,6 +307,90 @@ TextureImporter:
       bones: []
       spriteID: b1b6dc658aa6ca146bddd22ae9f0c59b
       internalID: 8465270892762914595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icons 1_9
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 558
+        width: 216
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 754ec7595d934fe4aaa784987b7e2bbd
+      internalID: -2657373798052070942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icons 1_10
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 559
+        width: 215
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6911c41c65b81b4fbb09aab187bb638
+      internalID: -642571999484012183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icons 1_11
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 559
+        width: 216
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 288fb0e8cf53a3b4bafa6046001b87d4
+      internalID: 1999359064800649042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: icons 1_12
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 558
+        width: 215
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85bfe5fbc8d778e46902a906560064cb
+      internalID: -5872384803205561515
       vertices: []
       indices: 
       edges: []
