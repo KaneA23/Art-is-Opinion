@@ -5,20 +5,21 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+
 namespace unitycoder_MobilePaint
 {
 
     public class ColorUIManager : MonoBehaviour
     {
-
         MobilePaint mobilePaint;
-        public Button[] colorpickers; // colors are taken from these buttons
+        public Button[] colorpickers;       // colors are taken from these buttons
 
-        public bool offsetSelected = true; // should we move the pencil when its selected
-                                           //public float defaultOffset=-46;
-                                           //public float moveOffsetX=-24;
+        public bool offsetSelected = true;  // should we move the pencil when its selected
+        //public float defaultOffset=-46;
+        //public float moveOffsetX=-24;
 
         [HideInInspector] public Image currentColorImage;
+
 
         void Awake()
         {
@@ -42,6 +43,7 @@ namespace unitycoder_MobilePaint
             }
         }
 
+
         // some button was clicked, lets take color from it and send to mobilepaint canvas 
         public void SetCurrentColor(Button button)
         {
@@ -51,7 +53,7 @@ namespace unitycoder_MobilePaint
 
             // send new color
             mobilePaint.SetPaintColor(newColor);
-            //			mobilePaint.paintColor = newColor;
+            //mobilePaint.paintColor = newColor;
 
             //if (offsetSelected)
             //{
@@ -60,8 +62,6 @@ namespace unitycoder_MobilePaint
             //}
 
         }
-
-
 
 
         public void Update()
@@ -108,5 +108,5 @@ namespace unitycoder_MobilePaint
         //	rectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left,offsetX,rectTransform.rect.width);
         //}
 
-    } // class
-} // namespace
+    }   // class
+}   // namespace

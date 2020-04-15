@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Tobii.Gaming;
 
+
 namespace unitycoder_MobilePaint
 {
     public class GazeAwareButtons : MonoBehaviour
@@ -50,6 +51,7 @@ namespace unitycoder_MobilePaint
         Vector2 filteredPoint;
         MobilePaint mobilePaint;
 
+
         // Start is called before the first frame update
         void Start()
         {
@@ -61,6 +63,7 @@ namespace unitycoder_MobilePaint
 
             timeBeforeClick = timeBetweenClicks;
         }
+
 
         private void Update()
         {
@@ -94,7 +97,6 @@ namespace unitycoder_MobilePaint
             saveYMax = saveRect.yMax;
 
 
-
             Vector2 gazePoint = TobiiAPI.GetGazePoint().Screen;  // Fetches the current co-ordinates on the screen that the player is looking at via the eye-tracker           
             filteredPoint = Vector2.Lerp(filteredPoint, gazePoint, 0.5f);
 
@@ -123,6 +125,7 @@ namespace unitycoder_MobilePaint
             }
 
         }
+
 
         // Changes the size of the brush by 5
         public void IncreaseBrushSize()

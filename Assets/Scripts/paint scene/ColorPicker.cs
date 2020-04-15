@@ -5,7 +5,6 @@ public class ColorPicker : MonoBehaviour
     public static Color newColor { get; private set; }
 
     [SerializeField]
-
     //  private Renderer selectedColorPreview;
 
 

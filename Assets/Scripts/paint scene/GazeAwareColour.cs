@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Tobii.Gaming;
 
+
 public class GazeAwareColour : MonoBehaviour
 {
     public static Color newColor { get; private set; }
@@ -20,11 +21,14 @@ public class GazeAwareColour : MonoBehaviour
     float timeBeforeClick;
     float timeBetweenClicks = 1;
     Vector2 filteredPoint;
+
+
     // Start is called before the first frame update
     void Start()
     {
         
     }
+
 
     // Update is called once per frame
     void Update()
