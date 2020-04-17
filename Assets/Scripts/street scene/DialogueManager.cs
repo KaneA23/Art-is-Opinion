@@ -27,10 +27,15 @@ public class DialogueManager : MonoBehaviour
     float timeBeforeClick;
     float timeBetweenClicks = 1;
     Vector2 filteredPoint;
+
+    public GameObject dialogueBox;
+    public GameObject image;
+    Vector3 startPos;
     // Start is called before the first frame update
     void Start()
     {
         sentences = new Queue<string>();
+        startPos = dialogueBox.transform.position;
     }
 
     public void StartDialogue(Dialogue dialogue)
@@ -93,6 +98,11 @@ public class DialogueManager : MonoBehaviour
         {
             DisplayNextSentence();
             timeBeforeClick = timeBetweenClicks;
+        }
+
+        if (dialogueBox.transform.position.y == startPos.y)
+        {
+            image.GetComponent<ChangePerson>().ChangeImage();
         }
     }
 	// coral
