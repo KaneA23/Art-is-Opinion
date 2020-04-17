@@ -348,6 +348,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 118338815}
   m_CullTransparentMesh: 0
+--- !u!1 &254769402
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 254769403}
+  - component: {fileID: 254769404}
+  m_Layer: 5
+  m_Name: Yes/No Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &254769403
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254769402}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1007764020}
+  - {fileID: 295924240}
+  m_Father: {fileID: 904126167}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &254769404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254769402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4d36523ee493045b95c18a5435f2f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yesButton: {fileID: 0}
+  noButton: {fileID: 0}
 --- !u!1 &295924239
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,7 +412,6 @@ GameObject:
   - component: {fileID: 295924243}
   - component: {fileID: 295924242}
   - component: {fileID: 295924241}
-  - component: {fileID: 295924244}
   m_Layer: 5
   m_Name: No button
   m_TagString: Untagged
@@ -379,8 +430,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.86782956, z: 1}
   m_Children: []
-  m_Father: {fileID: 904126167}
-  m_RootOrder: 4
+  m_Father: {fileID: 254769403}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -430,7 +481,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 295924244}
+      - m_Target: {fileID: 254769404}
         m_MethodName: NoButton
         m_Mode: 1
         m_Arguments:
@@ -480,18 +531,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 295924239}
   m_CullTransparentMesh: 0
---- !u!114 &295924244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 295924239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c4d36523ee493045b95c18a5435f2f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &432747088
 GameObject:
   m_ObjectHideFlags: 0
@@ -5461,7 +5500,6 @@ GameObject:
   - component: {fileID: 852595616}
   - component: {fileID: 852595615}
   - component: {fileID: 852595614}
-  - component: {fileID: 852595617}
   m_Layer: 5
   m_Name: Continue Button
   m_TagString: Untagged
@@ -5531,7 +5569,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 852595617}
+      - m_Target: {fileID: 1202375069}
         m_MethodName: DisplayNextSentence
         m_Mode: 1
         m_Arguments:
@@ -5582,22 +5620,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 852595612}
   m_CullTransparentMesh: 0
---- !u!114 &852595617
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 852595612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4de2d05c52ce0454e9ee7ed16b94741a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nameText: {fileID: 1238478246}
-  dialogueText: {fileID: 118338817}
-  textWait: 0
-  animator: {fileID: 904126170}
 --- !u!1 &864506629
 GameObject:
   m_ObjectHideFlags: 0
@@ -5677,8 +5699,7 @@ RectTransform:
   - {fileID: 118338816}
   - {fileID: 852595613}
   - {fileID: 432747089}
-  - {fileID: 295924240}
-  - {fileID: 1007764020}
+  - {fileID: 254769403}
   m_Father: {fileID: 1938997463}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5825,7 +5846,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1007764019
 GameObject:
@@ -5839,7 +5860,6 @@ GameObject:
   - component: {fileID: 1007764023}
   - component: {fileID: 1007764022}
   - component: {fileID: 1007764021}
-  - component: {fileID: 1007764024}
   m_Layer: 5
   m_Name: Yes button
   m_TagString: Untagged
@@ -5858,8 +5878,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.86782956, z: 1}
   m_Children: []
-  m_Father: {fileID: 904126167}
-  m_RootOrder: 5
+  m_Father: {fileID: 254769403}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5909,7 +5929,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1007764024}
+      - m_Target: {fileID: 254769404}
         m_MethodName: YesButton
         m_Mode: 1
         m_Arguments:
@@ -5960,18 +5980,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1007764019}
   m_CullTransparentMesh: 0
---- !u!114 &1007764024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1007764019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c4d36523ee493045b95c18a5435f2f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1130950542
 GameObject:
   m_ObjectHideFlags: 0
@@ -6127,6 +6135,7 @@ MonoBehaviour:
   dialogueText: {fileID: 118338817}
   textWait: 0
   animator: {fileID: 904126170}
+  continueButton: {fileID: 852595614}
 --- !u!4 &1202375070
 Transform:
   m_ObjectHideFlags: 0

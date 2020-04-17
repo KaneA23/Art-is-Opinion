@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Tobii.Gaming;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -13,6 +14,19 @@ public class DialogueManager : MonoBehaviour
 
     private Queue<string> sentences;
 
+    //MattP
+    public Button continueButton;
+    Vector3 continuePos;
+    Rect continueRect;
+
+    float continueXMin;
+    float continueXMax;
+    float continueYMin;
+    float continueYMax;
+
+    float timeBeforeClick;
+    float timeBetweenClicks = 1;
+    Vector2 filteredPoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,8 +73,28 @@ public class DialogueManager : MonoBehaviour
 				StartCoroutine(TypeSentence(sentence));
 				Debug.Log(sentence);
 			}
-		}		
-	}
+		}
+
+        //MattP
+        timeBetweenClicks -= Time.deltaTime;
+
+        continuePos = continueButton.transform.position;
+        continueRect = continueButton.GetComponent<RectTransform>().rect;
+
+        continueXMin = continueRect.xMin;
+        continueXMax = continueRect.xMax;
+        continueYMin = continueRect.yMin;
+        continueYMax = continueRect.yMax;
+
+        Vector2 gazePoint = TobiiAPI.GetGazePoint().Screen;  // Fetches the current co-ordinates on the screen that the player is looking at via the eye-tracker           
+        filteredPoint = Vector2.Lerp(filteredPoint, gazePoint, 0.5f);
+
+        if ((continuePos.x + continueXMin) < filteredPoint.x && filteredPoint.x < (continuePos.x + continueXMax) && (continuePos.y + continueYMin) < filteredPoint.y && filteredPoint.y < (continuePos.y + continueYMax) && timeBetweenClicks <= 0)
+        {
+            DisplayNextSentence();
+            timeBeforeClick = timeBetweenClicks;
+        }
+    }
 	// coral
 
 	IEnumerator TypeSentence (string sentence)
