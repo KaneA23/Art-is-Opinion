@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DialogueTrigger : MonoBehaviour
-{
-    public Dialogue dialogue;
+public class DialogueTrigger : MonoBehaviour {
+	public Dialogue dialogue;
 	float timeWait;
+	float sceneChangeWait;
+	public Animator anim;
+	public GameObject CameraShutter;
+	public GameObject Canvas;
 
 	private void Start() {
 		timeWait = Random.Range(2, 4);
@@ -19,6 +22,13 @@ public class DialogueTrigger : MonoBehaviour
 				TriggerDialogue();
 			}
 		}
+		if (sceneChangeWait > 0) {
+			sceneChangeWait -= Time.deltaTime;
+			if (sceneChangeWait <= 0) {
+				SceneManager.LoadScene("PaintScene");
+			}
+		}
+
 	}
 
 	public void No() {
@@ -28,11 +38,18 @@ public class DialogueTrigger : MonoBehaviour
 	}
 
 	public void Yes() {
-		SceneManager.LoadScene("PaintScene");
+		//GameObject o = Instantiate(CameraShutter, new Vector3(0, 0, 0), Quaternion.identity);
+		//o.transform.parent = Canvas.transform;
+		//o.transform.position = new Vector3(0, 0, 0);
+		//Debug.Log(o.transform.position);
+
+		//anim = CameraShutter.GetComponent<Animator>();
+		//anim.SetTrigger("Active");
+
+		sceneChangeWait = 2;
 	}
 
-	public void TriggerDialogue ()
-    {
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
-    }
+	public void TriggerDialogue() {
+		FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+	}
 }

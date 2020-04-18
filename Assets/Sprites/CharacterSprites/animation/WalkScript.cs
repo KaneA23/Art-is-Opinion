@@ -4,15 +4,38 @@ using UnityEngine;
 
 public class WalkScript : MonoBehaviour {
 
-    public GameObject PinkLady;
+	float timeWait = 20;
+
+	float direction;
+	/// //////////////////////////////////////////// find the walk controller in the scene 
+	public WalkController walkController;
 
 
-    void start() {
-		Instantiate(PinkLady, new Vector3(120, 24, 170), Quaternion.identity);
+	private void Start() {
+
+		if (walkController.location == 0) {
+			GetComponent<SpriteRenderer>().flipX = false;
+			direction = 0.8f;
+
+		}
+		if (walkController.location == 1) {
+			GetComponent<SpriteRenderer>().flipX = true;
+			direction = -0.8f;
+		}
 	}
 
-    void FixedUpdate() {
+	private void Update() {
+		
+		transform.Translate(direction, 0, 0);
+		Debug.Log(direction + " yesyezayezyutr");
 
-		PinkLady.transform.Translate(-0.8f, 0, 0);
-    }
+
+		if (timeWait > 0) {
+			timeWait -= Time.deltaTime;
+			if (timeWait <= 0) {
+				Destroy(gameObject);
+
+			}
+		}
+	}
 }
