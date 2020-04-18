@@ -1,11 +1,20 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public class BackToStreetScript : MonoBehaviour {
 
-public class BackToStreetScript : MonoBehaviour
-{
-    public void LoadScene(string Menu)
-    {
-        SceneManager.LoadScene("StreetScene");
-    }
+	float sceneChangeWait;
+	
+	public void DontSave() {
+		sceneChangeWait = 2;
+	}
+
+	private void Update() {
+		if (sceneChangeWait > 0) {
+			sceneChangeWait -= Time.deltaTime;
+			if (sceneChangeWait <= 0) {
+				SceneManager.LoadScene("StreetScene");
+			}
+		}
+	}
 }

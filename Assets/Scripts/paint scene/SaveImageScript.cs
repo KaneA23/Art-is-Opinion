@@ -13,6 +13,7 @@ using UnityEngine.SceneManagement;
 
 public class SaveImageScript : MonoBehaviour {
 	public RenderTexture SaveTexture;
+	float sceneChangeWait;
 
 
 	/// <summary>
@@ -20,9 +21,9 @@ public class SaveImageScript : MonoBehaviour {
 	/// </summary>
 	public void Save() {
 		StartCoroutine(CoSave());
+		sceneChangeWait = 2;
 	}
-
-
+	
 	/// <summary>
 	/// Once the current frame ends, the SaveCamera's image is saved to Assets folder
 	/// </summary>
@@ -42,13 +43,17 @@ public class SaveImageScript : MonoBehaviour {
 		var saveData = texture2D.EncodeToPNG(); // Turns the image seen in the SaveCamera to a PNG
 
 		File.WriteAllBytes(Application.dataPath + "/SavedImage/savedImage.png", saveData);  // Saves the .PNG to the desired directory
-		SceneManager.LoadScene("StreetScene");
 	}
 
 	// coral
-	public void LoadScene(string Menu) {
-		SceneManager.LoadScene("StreetScene");
+
+	private void Update() {
+		if (sceneChangeWait > 0) {
+			sceneChangeWait -= Time.deltaTime;
+			if (sceneChangeWait <= 0) {
+				SceneManager.LoadScene("StreetScene");
+			}
+		}
 	}
 	// coral
 }
-
