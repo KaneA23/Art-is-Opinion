@@ -14307,7 +14307,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   peoplePrefabs:
   - {fileID: 5044902177266750877, guid: 697e9d74fc201844ca1aec1b77e08fe2, type: 3}
-  - {fileID: 5821879635982134563, guid: d1e2ee90073a7234fbc81ecf1c2ad637, type: 3}
   cloudPrefabs:
   - {fileID: 7005616405692065441, guid: 1d60843221dd02b44b07e1a953d46f38, type: 3}
 --- !u!1 &4323022392408825463
