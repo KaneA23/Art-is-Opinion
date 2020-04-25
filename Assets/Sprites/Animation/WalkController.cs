@@ -17,7 +17,7 @@ public class WalkController : MonoBehaviour {
 	GameObject Prefabs = null;
 
 
-	private void Awake() {
+	private void Start() {
 		startX = Random.Range(-200, 200);
 		z = Random.Range(160, 210);
 		if (z > 185) {
@@ -67,7 +67,7 @@ public class WalkController : MonoBehaviour {
 					Prefabs = GameObject.Instantiate(cloudPrefabs[Random.Range(0, cloudPrefabs.Count)], new Vector3(400, 200, z), Quaternion.identity);
 
 				}
-				timeWaitClouds = Random.Range(30, 60);
+				timeWaitClouds = Random.Range(10, 30);
 
 			}
 		}
