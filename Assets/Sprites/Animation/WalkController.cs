@@ -51,8 +51,6 @@ public class WalkController : MonoBehaviour {
 
 				}
 				timeWaitPeople = Random.Range(2, 6);
-				Debug.Log(timeWaitPeople);
-				Debug.Log("             ." + location);
 
 			}
 		}
@@ -70,8 +68,6 @@ public class WalkController : MonoBehaviour {
 
 				}
 				timeWaitClouds = Random.Range(30, 60);
-				Debug.Log(timeWaitClouds);
-				Debug.Log("             ." + location);
 
 			}
 		}

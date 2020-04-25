@@ -31,14 +31,48 @@ public class DialogueManager : MonoBehaviour
     public GameObject dialogueBox;
     public GameObject image;
     Vector3 startPos;
-    // Start is called before the first frame update
-    void Start()
+	public ChangePerson changePerson;
+
+	public List<Sprite> images;
+	int numImages;
+	public Image myImageComponent;
+	int rand;
+	public float changewait;
+	public static DialogueManager personInstance;
+
+	bool down = false;
+
+
+	///// <summary>
+	///// Allows the script to be accessable in other scenes.
+	///// To allow the character to be the same in both scenes.
+	///// Added by Kane
+	///// </summary>
+	//private void Awake() {
+	//	personInstance = this;
+
+	//	DontDestroyOnLoad(gameObject);
+	//}
+
+	// Start is called before the first frame update
+
+	void Start()
     {
         sentences = new Queue<string>();
         startPos = dialogueBox.transform.position;
-    }
 
-    public void StartDialogue(Dialogue dialogue)
+
+		//myImageComponent = GetComponent<Image>();
+		//ChangeImage();
+	}
+
+	//public void ChangeImage() {
+	//	rand = Random.Range(0, images.Count);
+	//	myImageComponent.sprite = images[rand];
+	//	Debug.Log(rand);
+	//}
+
+	public void StartDialogue(Dialogue dialogue)
     {
         animator.SetBool("IsOpen", true);
 
@@ -100,12 +134,19 @@ public class DialogueManager : MonoBehaviour
             timeBeforeClick = timeBetweenClicks;
         }
 
-        if (dialogueBox.transform.position.y == startPos.y)
-        {
-            image.GetComponent<ChangePerson>().ChangeImage();
-        }
-    }
-	// coral
+		// coral
+		if (dialogueBox.transform.position.y == startPos.y && down == false) {
+			down = true;
+			Debug.Log("ifykyflofyu");
+
+			//   image.GetComponent<ChangePerson>().ChangeImage();
+			changePerson.ChangeImage();
+
+		} else if (dialogueBox.transform.position.y != startPos.y && down == true) {
+			down = false;
+		}
+	}
+
 
 	IEnumerator TypeSentence (string sentence)
     {

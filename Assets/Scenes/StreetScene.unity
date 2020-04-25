@@ -964,6 +964,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 432747092}
+        m_MethodName: NewImage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &295924242
@@ -1103,7 +1114,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: df63a8da03572b741ac5d84d8bc01e50, type: 3}
   - {fileID: 21300000, guid: a0e8a2958b8a2444d9318811f44e7b00, type: 3}
   myImageComponent: {fileID: 0}
-  rand: 0
+  changewait: 0
 --- !u!1 &481517233
 GameObject:
   m_ObjectHideFlags: 0
@@ -6658,7 +6669,7 @@ RectTransform:
   m_GameObject: {fileID: 904126166}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6116771, y: 0.7551609, z: 0.6116771}
+  m_LocalScale: {x: 0.6116771, y: 0.8041709, z: 0.6116771}
   m_Children:
   - {fileID: 1238478245}
   - {fileID: 118338816}
@@ -6670,7 +6681,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 47.515, y: -396.35895}
+  m_AnchoredPosition: {x: 47.515, y: -400}
   m_SizeDelta: {x: 641.2, y: 282.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &904126168
@@ -7904,6 +7915,20 @@ MonoBehaviour:
   continueButton: {fileID: 852595614}
   dialogueBox: {fileID: 904126166}
   image: {fileID: 432747088}
+  changePerson: {fileID: 432747092}
+  images:
+  - {fileID: 21300000, guid: fb866a764a714a34d995a9edfff32153, type: 3}
+  - {fileID: 21300000, guid: a6212dfd63e832d4881e5847a837f933, type: 3}
+  - {fileID: 21300000, guid: ed954d0b41d622149bad6abc01f51ad8, type: 3}
+  - {fileID: 21300000, guid: cc705f57e60509045b8a781fc320b978, type: 3}
+  - {fileID: 21300000, guid: a87d4ed750df611428db9ee64df58a96, type: 3}
+  - {fileID: 21300000, guid: 3cda1b73c2c361a46b24c0601417c6ce, type: 3}
+  - {fileID: 21300000, guid: 940d891e0dc777b4da9c47e34587ebed, type: 3}
+  - {fileID: 21300000, guid: 277c9a6c570b8024c9a6e54619945f97, type: 3}
+  - {fileID: 21300000, guid: df63a8da03572b741ac5d84d8bc01e50, type: 3}
+  - {fileID: 21300000, guid: a0e8a2958b8a2444d9318811f44e7b00, type: 3}
+  myImageComponent: {fileID: 432747090}
+  changewait: 0
 --- !u!4 &1202375070
 Transform:
   m_ObjectHideFlags: 0
