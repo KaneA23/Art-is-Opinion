@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayButtonScript : MonoBehaviour {
+public class MenuButtonScript : MonoBehaviour {
 	float sceneChangeWait;
 	public GameObject cameraShutterClosed;
 	public GameObject MenuUI;
 	public GameObject Street;
-
-
 	public void ButtonClicked() {
 		cameraShutterClosed.transform.gameObject.SetActive(true);
 		sceneChangeWait = 2;
@@ -19,8 +17,8 @@ public class PlayButtonScript : MonoBehaviour {
 		if (sceneChangeWait > 0) {
 			sceneChangeWait -= Time.deltaTime;
 			if (sceneChangeWait <= 0) {
-				MenuUI.transform.gameObject.SetActive(false);
-				Street.transform.gameObject.SetActive(true);
+				MenuUI.transform.gameObject.SetActive(true);
+				Street.transform.gameObject.SetActive(false);
 			}
 		}
 	}

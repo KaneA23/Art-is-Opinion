@@ -112,7 +112,6 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = "";
 
 		foreach (char letter in sentence.ToCharArray()) {
-			Debug.Log("htthjtjuk");
 
 			dialogueText.text += letter;
 			yield return null;

@@ -11,11 +11,13 @@ public class DialogueTrigger : MonoBehaviour {
 	public GameObject CameraShutter;
 	public GameObject Canvas;
 
-	private void Start() {
-		timeWait = Random.Range(2, 4);
-	}
+	//private void Start() {
+	//	timeWait = Random.Range(2, 4);
+	//}
 
 	private void Update() {
+			
+
 		if (timeWait > 0) {
 			timeWait -= Time.deltaTime;
 			if (timeWait <= 0) {
@@ -29,6 +31,10 @@ public class DialogueTrigger : MonoBehaviour {
 			}
 		}
 
+	}
+
+	public void StartDialog() {
+		timeWait = Random.Range(2, 4);
 	}
 
 	public void No() {

@@ -3429,7 +3429,7 @@ MonoBehaviour:
   connectBrushStokes: 1
   paintColor:
     serializedVersion: 2
-    rgba: 4278190335
+    rgba: 4281348351
   brushSize: 22
   brushSizeMin: 1
   brushSizeMax: 64
@@ -4372,7 +4372,7 @@ MonoBehaviour:
   connectBrushStokes: 1
   paintColor:
     serializedVersion: 2
-    rgba: 4278190335
+    rgba: 4281348351
   brushSize: 22
   brushSizeMin: 1
   brushSizeMax: 64
@@ -4807,14 +4807,14 @@ RectTransform:
   m_GameObject: {fileID: 1827035516}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.71870995, y: 0.71870995, z: 0.71870995}
+  m_LocalScale: {x: 0.959334, y: 0.959334, z: 0.959334}
   m_Children: []
   m_Father: {fileID: 115009138}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -376, y: -74.999985}
+  m_AnchoredPosition: {x: -358, y: -90.171}
   m_SizeDelta: {x: 84.1, y: 126.09}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1827035518

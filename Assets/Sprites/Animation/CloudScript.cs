@@ -27,7 +27,6 @@ public class CloudScript : MonoBehaviour
 	private void Update() {
 
 		transform.Translate(direction, 0, 0);
-		Debug.Log(direction + " yesyezayezyutr");
 
 
 		if (timeWait > 0) {
