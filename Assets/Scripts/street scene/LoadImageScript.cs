@@ -57,7 +57,7 @@ public class LoadImageScript : MonoBehaviour
             }
 
             RawImage image = GetComponent<RawImage>();
-            image.texture = loadedTexture;
+            //image.texture = loadedTexture;  // My code
         }
     }
 
