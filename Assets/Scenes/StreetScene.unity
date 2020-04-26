@@ -1306,6 +1306,7 @@ MonoBehaviour:
   - {fileID: 8505027554404784953, guid: c64d821acc92ccd4f9b83393bd4c20c2, type: 3}
   - {fileID: -7343692073498277705, guid: c64d821acc92ccd4f9b83393bd4c20c2, type: 3}
   myImageComponent: {fileID: 0}
+  rand: 0
   changewait: 0
 --- !u!1 &481517233
 GameObject:
@@ -7845,6 +7846,31 @@ MonoBehaviour:
   - {fileID: -7343692073498277705, guid: c64d821acc92ccd4f9b83393bd4c20c2, type: 3}
   myImageComponent: {fileID: 432747090}
   changewait: 0
+  dogNames:
+  - Dexter
+  - Turbo
+  - Perrtio
+  femaleFirstNames:
+  - Sharon
+  - Maize
+  - Bethany
+  - Claire
+  - Amy
+  - Jannett
+  - Sara
+  - Abby
+  - Nia
+  - Zula
+  maleFirstNames:
+  - Dan
+  - Steve
+  surnames:
+  - Beck
+  - Johnson
+  sentenses:
+  - Hi, could you draw my picture?
+  - Hello, would you mind drawing me?
+  - Hey, can I have my picture done?
 --- !u!4 &1202375070
 Transform:
   m_ObjectHideFlags: 0
@@ -7873,9 +7899,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     name: Patron
-    sentences:
-    - Hello, can you do a painting of my face?
-    - I'll pay you depending on how good a job you do.
+    speech:
+    - 
   anim: {fileID: 904126170}
   Canvas: {fileID: 1938997459}
 --- !u!1 &1238478244

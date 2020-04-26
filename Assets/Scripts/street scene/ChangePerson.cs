@@ -10,7 +10,7 @@ public class ChangePerson : MonoBehaviour {
 	public List<Sprite> images;
 	int numImages;
 	public Image myImageComponent;
-	int rand;
+	public int rand;
 	public float changewait;
 
 

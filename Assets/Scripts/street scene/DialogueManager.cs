@@ -12,7 +12,7 @@ public class DialogueManager : MonoBehaviour
 
     public Animator animator;
 
-    private Queue<string> sentences;
+    private <string> Speech;
 
     //MattP
     public Button continueButton;
@@ -40,6 +40,19 @@ public class DialogueManager : MonoBehaviour
 	public float changewait;
 	public static DialogueManager personInstance;
 
+	public List<string> dogNames;
+	public List<string> femaleFirstNames;
+	public List<string> maleFirstNames;
+	public List<string> surnames;
+	public List<string> sentenses;
+	int randomNameNumber;
+	int randomSurnameNumber;
+	int randomSentenceNumber;
+	string randomName;
+	string randomSurname;
+	string randomSentence;
+
+
 	bool down = false;
 
 
@@ -58,7 +71,7 @@ public class DialogueManager : MonoBehaviour
 
 	void Start()
     {
-        sentences = new Queue<string>();
+        Speech = new Queue<string>();
         startPos = dialogueBox.transform.position;
 
 
@@ -72,34 +85,79 @@ public class DialogueManager : MonoBehaviour
 	//	Debug.Log(rand);
 	//}
 
-	public void StartDialogue(Dialogue dialogue)
-    {
-        animator.SetBool("IsOpen", true);
+	public void StartDialogue(Dialogue dialogue) {
 
-        Debug.Log("Starting conversation with " + dialogue.name);
+		Speech.Clear();
 
-        nameText.text = dialogue.name;
 
-        sentences.Clear();
+		randomSentenceNumber = Random.Range(0, sentenses.Count);
+		randomSentence = sentenses[randomSentenceNumber];
+		dialogue.request = randomSentence;
 
-        foreach (string sentence in dialogue.sentences)
-        {
-            sentences.Enqueue(sentence);
-        }
+		if (changePerson.rand == 0) {
+			randomNameNumber = Random.Range(0, dogNames.Count);
+			randomName = dogNames[randomNameNumber];
+			dialogue.name = randomName;
+			dialogue.request = "Woof woof ruff";
 
-        DisplayNextSentence();
-    }
+		} else if (changePerson.rand == 1) {
+			dialogue.name = "Polly Collins";
+		} else if (changePerson.rand == 2) {
+			dialogue.name = "Gretta McGee";
+		} else if (changePerson.rand == 6) {
+			dialogue.name = "Kane Adams";
+		} else if (changePerson.rand == 7) {
+			dialogue.name = "Jade West";
+		} else if (changePerson.rand == 8) {
+			dialogue.name = "Yung Gregg";
+		} else if (changePerson.rand == 9 || changePerson.rand == 10) {
+			randomNameNumber = Random.Range(0, surnames.Count);
+			randomSurname = surnames[randomSurnameNumber];
+			dialogue.name = "Mr. " + randomSurname;
+		} else if (changePerson.rand == 13) {
+			randomNameNumber = Random.Range(0, surnames.Count);
+			randomSurname = surnames[randomSurnameNumber];
+			dialogue.name = "Ms. " + randomSurname;
+
+		} else if (changePerson.rand == 3 || changePerson.rand == 5 || changePerson.rand == 12) {
+			randomNameNumber = Random.Range(0, femaleFirstNames.Count);
+			randomSurnameNumber = Random.Range(0, surnames.Count);
+			randomName = femaleFirstNames[randomNameNumber];
+			randomSurname = surnames[randomSurnameNumber];
+			dialogue.name = randomName + " " + randomSurname;
+		} else if (changePerson.rand == 4 || changePerson.rand == 11 || changePerson.rand <= 14) {
+			randomNameNumber = Random.Range(0, maleFirstNames.Count);
+			randomNameNumber = Random.Range(0, surnames.Count);
+			randomName = maleFirstNames[randomNameNumber];
+			randomSurname = surnames[randomSurnameNumber];
+			dialogue.name = randomName + " " + randomSurname;
+
+		}
+
+			animator.SetBool("IsOpen", true);
+		
+			nameText.text = dialogue.name;
+
+
+		
+
+			//foreach (string sentence in dialogue.speech) {
+			//	Speech.Enqueue(sentence);
+			//}
+
+			//DisplayNextSentence();
+		}
 
     public void DisplayNextSentence()
     {
-        if (sentences.Count == 0)
-        {
-        //    EndDialogue();
-            return;
-        }
-		// coral
-		textWait = 1;
-		// coral       
+  //      if (Speech.Count == 0)
+  //      {
+  //      //    EndDialogue();
+  //          return;
+  //      }
+		//// coral
+		//textWait = 1;
+		//// coral       
     }
 
 	// coral
@@ -107,7 +165,7 @@ public class DialogueManager : MonoBehaviour
 		if (textWait > 0) {
 			textWait -= Time.deltaTime;
 			if (textWait <= 0) {
-				string sentence = sentences.Dequeue();
+				string sentence = Speech.Dequeue();
 				StopAllCoroutines();
 				StartCoroutine(TypeSentence(sentence));
 				Debug.Log(sentence);
