@@ -31,7 +31,6 @@ public class GazeMenuUI : MonoBehaviour
     float DrawXMax;
     float DrawYMin;
     float DrawYMax;
-    int currentBrushSize;
 
     float GalleryXMin;
     float GalleryXMax;

@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using Tobii.Gaming;
 
 namespace unitycoder_MobilePaint
 {
@@ -9,11 +10,26 @@ namespace unitycoder_MobilePaint
 		public MobilePaint mobilePaint;
 		public Button buttonTemplate;
 
-		[SerializeField] private int padding = 8;
+        public Button[] brushes;
+        Vector3[] Positions;
+        Rect[] rects;
+        float[] XMin;
+        float[] XMax;
+        float[] YMin;
+        float[] YMax;
+
+        float timeBeforeClick;
+        float timeBetweenClicks = 1;
+
+        Vector2 filteredPoint;
+
+        [SerializeField] private int padding = 8;
 
 		void Start () 
 		{
-			if (mobilePaint==null) Debug.LogError("No MobilePaint assigned at "+transform.name);
+            timeBeforeClick = timeBetweenClicks;
+
+            if (mobilePaint==null) Debug.LogError("No MobilePaint assigned at "+transform.name);
 			if (buttonTemplate==null) Debug.LogError("No buttonTemplate assigned at "+transform.name);
 
 			// build custom brush buttons for each custom brush
@@ -47,11 +63,36 @@ namespace unitycoder_MobilePaint
 				newButton.onClick.AddListener(delegate {this.SetCustomBrush(index);});
 
 
-			}
+                //MattP
+                Positions[index] = newButton.transform.position;
+                rects[index] = newButton.GetComponent<RectTransform>().rect;
+                XMin[index] = rects[index].xMin;
+                XMax[index] = rects[index].xMax;
+                YMin[index] = rects[index].yMin;
+                YMax[index] = rects[index].yMax;
+
+            }
 		}
 
-		// send current brush index to mobilepaint
-		public void SetCustomBrush(int index)
+        private void Update()
+        {
+            Vector2 gazePoint = TobiiAPI.GetGazePoint().Screen;  // Fetches the current co-ordinates on the screen that the er is looking at via the eye-tracker           
+            filteredPoint = Vector2.Lerp(filteredPoint, gazePoint, 0.5f);
+
+            int loopPos = 0;
+            foreach(Button brush in brushes)
+            {
+                if ((Positions[loopPos].x + XMin[loopPos]) < filteredPoint.x && filteredPoint.x < (Positions[loopPos].x + XMax[loopPos]) && (Positions[loopPos].y + YMin[loopPos]) < filteredPoint.y && filteredPoint.y < (Positions[loopPos].y + YMax[loopPos]) && timeBetweenClicks <= 0)
+                {
+                    SetCustomBrush(loopPos);
+                    timeBeforeClick = timeBetweenClicks;
+                    break;
+                }
+                loopPos += 1;
+            }
+        }
+        // send current brush index to mobilepaint
+        public void SetCustomBrush(int index)
 		{
 			mobilePaint.selectedBrush = index;
 			mobilePaint.ReadCurrentCustomBrush(); // tell mobile paint to read custom brush pixel data
