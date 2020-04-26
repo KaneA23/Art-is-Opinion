@@ -1999,15 +1999,15 @@ RectTransform:
   m_GameObject: {fileID: 679784042}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_Children: []
   m_Father: {fileID: 115009138}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 94.9, y: 38.7}
-  m_SizeDelta: {x: 368.8, y: 330.8}
+  m_AnchoredPosition: {x: 125.9, y: 39.390022}
+  m_SizeDelta: {x: 275.7, y: 331.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &679784044
 MonoBehaviour:
@@ -2819,10 +2819,7 @@ MonoBehaviour:
   maskTex: {fileID: 0}
   useCustomBrushes: 1
   customBrushes:
-  - {fileID: 2800000, guid: d06c067971ba30d4cae0c6258f67a87b, type: 3}
   - {fileID: 2800000, guid: 9aafb419af5e80443b5bf8a62f946cff, type: 3}
-  - {fileID: 2800000, guid: 0ad93e8f4fe098e48a364950fdf9a07f, type: 3}
-  - {fileID: 2800000, guid: 7ce84330054237f48a19129ad346fedd, type: 3}
   - {fileID: 2800000, guid: 868ee708e96b2f142bf9d01ae56a831d, type: 3}
   - {fileID: 2800000, guid: 53eeeb26072f1ab4ebcc6f88c462baa4, type: 3}
   - {fileID: 2800000, guid: f3f441b0aedd23b4da070d42f513c02d, type: 3}
@@ -3995,6 +3992,7 @@ GameObject:
   - component: {fileID: 1977844136}
   - component: {fileID: 1977844135}
   - component: {fileID: 1977844133}
+  - component: {fileID: 1977844134}
   m_Layer: 0
   m_Name: CharacterScriptCanvas
   m_TagString: Untagged
@@ -4015,6 +4013,80 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   personImage: {fileID: 85816273}
+--- !u!114 &1977844134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1977844132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a329d585c217af74f8e7769cad76c730, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isEyeTracker: 0
+  enableTouch: 0
+  paintLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  createCanvasMesh: 1
+  referenceArea: {fileID: 0}
+  connectBrushStokes: 1
+  paintColor:
+    serializedVersion: 2
+    rgba: 4281348351
+  brushSize: 22
+  brushSizeMin: 1
+  brushSizeMax: 64
+  hiQualityBrush: 1
+  realTimeTexUpdate: 0
+  textureUpdateSpeed: 0.125
+  useAdditiveColors: 1
+  brushAlphaStrength: 0.12
+  drawMode: 0
+  useLockArea: 0
+  useMaskLayerOnly: 0
+  smoothenMaskEdges: 0
+  useThreshold: 0
+  paintThreshold: 128
+  eraserMode: 1
+  getAreaSize: 0
+  canDrawOnBlack: 0
+  canvasSizeAdjust: {x: 0, y: 0}
+  targetTexture: _MainTex
+  filterMode: 1
+  clearColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  useMaskImage: 0
+  maskTex: {fileID: 0}
+  useCustomBrushes: 1
+  customBrushes:
+  - {fileID: 2800000, guid: 9aafb419af5e80443b5bf8a62f946cff, type: 3}
+  - {fileID: 2800000, guid: 868ee708e96b2f142bf9d01ae56a831d, type: 3}
+  - {fileID: 2800000, guid: 53eeeb26072f1ab4ebcc6f88c462baa4, type: 3}
+  - {fileID: 2800000, guid: f3f441b0aedd23b4da070d42f513c02d, type: 3}
+  - {fileID: 2800000, guid: dfed2283294050f40958021e3c777a52, type: 3}
+  - {fileID: 2800000, guid: 760649e1c934b2341a378d72b71b517b, type: 3}
+  overrideCustomBrushColor: 0
+  useCustomBrushAlpha: 1
+  selectedBrush: 0
+  useCustomPatterns: 0
+  customPatterns: []
+  selectedPattern: 0
+  previewLineCircle: {fileID: 0}
+  snapLinesToGrid: 0
+  gridResolution: 128
+  resolutionScaler: 1
+  overrideResolution: 0
+  overrideWidth: 1024
+  overrideHeight: 768
+  textureNeedsUpdate: 0
+  undoEnabled: 0
+  userInterface: {fileID: 353257471}
+  hideUIWhilePainting: 1
+  debugMode: 0
 --- !u!23 &1977844135
 MeshRenderer:
   m_ObjectHideFlags: 0
