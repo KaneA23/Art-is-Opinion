@@ -27,7 +27,7 @@ public class SaveImageScript : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
-        int numOfPNGs = 1;
+        numOfPNGs = 1;
         filePath = Application.dataPath + "/Resources/Images";  // Where the image is to be saved
 
         // Stores the info on what is saved in the filePath to an array
