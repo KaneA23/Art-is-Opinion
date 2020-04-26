@@ -482,7 +482,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: Hi, can you draw my picture?
 --- !u!222 &118338818
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7899,8 +7899,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
     name: Patron
-    speech:
-    - 
+    request:
+    - Hi
+    - Hello
   anim: {fileID: 904126170}
   Canvas: {fileID: 1938997459}
 --- !u!1 &1238478244

@@ -12,7 +12,7 @@ public class DialogueManager : MonoBehaviour
 
     public Animator animator;
 
-    private <string> Speech;
+ //   private <string> Speech;
 
     //MattP
     public Button continueButton;
@@ -71,7 +71,7 @@ public class DialogueManager : MonoBehaviour
 
 	void Start()
     {
-        Speech = new Queue<string>();
+   //     Speech = new Queue<string>();
         startPos = dialogueBox.transform.position;
 
 
@@ -87,18 +87,18 @@ public class DialogueManager : MonoBehaviour
 
 	public void StartDialogue(Dialogue dialogue) {
 
-		Speech.Clear();
+	//	Speech.Clear();
 
 
 		randomSentenceNumber = Random.Range(0, sentenses.Count);
 		randomSentence = sentenses[randomSentenceNumber];
-		dialogue.request = randomSentence;
+	//	dialogue.request = randomSentence;
 
 		if (changePerson.rand == 0) {
 			randomNameNumber = Random.Range(0, dogNames.Count);
 			randomName = dogNames[randomNameNumber];
 			dialogue.name = randomName;
-			dialogue.request = "Woof woof ruff";
+	//		dialogue.request = "Woof woof ruff";
 
 		} else if (changePerson.rand == 1) {
 			dialogue.name = "Polly Collins";
@@ -125,7 +125,7 @@ public class DialogueManager : MonoBehaviour
 			randomName = femaleFirstNames[randomNameNumber];
 			randomSurname = surnames[randomSurnameNumber];
 			dialogue.name = randomName + " " + randomSurname;
-		} else if (changePerson.rand == 4 || changePerson.rand == 11 || changePerson.rand <= 14) {
+		} else if (changePerson.rand == 4 || changePerson.rand == 11 || changePerson.rand >= 14) {
 			randomNameNumber = Random.Range(0, maleFirstNames.Count);
 			randomNameNumber = Random.Range(0, surnames.Count);
 			randomName = maleFirstNames[randomNameNumber];
@@ -137,16 +137,16 @@ public class DialogueManager : MonoBehaviour
 			animator.SetBool("IsOpen", true);
 		
 			nameText.text = dialogue.name;
+		//	dialogueText.text = dialogue.request;
 
 
-		
 
-			//foreach (string sentence in dialogue.speech) {
-			//	Speech.Enqueue(sentence);
-			//}
+		//foreach (string sentence in dialogue.speech) {
+		//	Speech.Enqueue(sentence);
+		//}
 
-			//DisplayNextSentence();
-		}
+		//DisplayNextSentence();
+	}
 
     public void DisplayNextSentence()
     {
@@ -162,15 +162,15 @@ public class DialogueManager : MonoBehaviour
 
 	// coral
 	private void Update() {
-		if (textWait > 0) {
-			textWait -= Time.deltaTime;
-			if (textWait <= 0) {
-				string sentence = Speech.Dequeue();
-				StopAllCoroutines();
-				StartCoroutine(TypeSentence(sentence));
-				Debug.Log(sentence);
-			}
-		}
+		//if (textWait > 0) {
+		//	textWait -= Time.deltaTime;
+		//	if (textWait <= 0) {
+		//		string sentence = Speech.Dequeue();
+		//		StopAllCoroutines();
+		//		StartCoroutine(TypeSentence(sentence));
+		//		Debug.Log(sentence);
+		//	}
+		//}
 
         //MattP
         timeBetweenClicks -= Time.deltaTime;
@@ -206,17 +206,17 @@ public class DialogueManager : MonoBehaviour
 	}
 
 
-	IEnumerator TypeSentence (string sentence)
-    {
-        dialogueText.text = "";
+	//IEnumerator TypeSentence (string sentence)
+ //   {
+ //       dialogueText.text = "";
 
-		foreach (char letter in sentence.ToCharArray()) {
+	//	foreach (char letter in sentence.ToCharArray()) {
 
-			dialogueText.text += letter;
-			yield return null;
-		}
+	//		dialogueText.text += letter;
+	//		yield return null;
+	//	}
 
-	}
+	//}
 
 	public void EndDialogue()
     {
