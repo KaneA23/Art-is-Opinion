@@ -15,13 +15,13 @@ using UnityEngine.UI;
 
 public class ChangePersonPaintScript : MonoBehaviour
 {
-    Image personImage;  // The player image that changes
+    public SpriteRenderer personImage;  // The player image that changes
 
 
     // Start is called before the first frame update
     void Start()
     {
-        personImage = GetComponent<Image>();
+        //personImage = GetComponent<Image>();
         personImage.sprite = ChangePerson.personInstance.myImageComponent.sprite;
     }
 }
