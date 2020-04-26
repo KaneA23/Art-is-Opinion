@@ -2,25 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraShutterScript : MonoBehaviour
-{
-	float timeWait = 2;
+public class CameraShutterScript : MonoBehaviour {
+	float timeWait;
 	public GameObject cameraShutterOpen;
-	public GameObject cameraShutterClosed;
-
-	private void Awake() {
-		cameraShutterOpen.transform.gameObject.SetActive(true);
-		cameraShutterClosed.transform.gameObject.SetActive(false);
+	public CameraShutterScript CameraShutterScriptOpen;
+	private void Start() {
+		timeWait = 2;
 
 	}
 	// Update is called once per frame
 	void Update() {
+
 		if (timeWait > 0) {
+
 			timeWait -= Time.deltaTime;
+
 			if (timeWait <= 0) {
-				cameraShutterOpen.transform.gameObject.SetActive(false);
+
+				if (this != cameraShutterOpen) {
+
+					cameraShutterOpen.transform.gameObject.SetActive(true);
+					CameraShutterScriptOpen.timeWait = 2;
+					timeWait = 2;
+				}
+				transform.gameObject.SetActive(false);
 
 			}
 		}
 	}
-}
+}		
+	
+

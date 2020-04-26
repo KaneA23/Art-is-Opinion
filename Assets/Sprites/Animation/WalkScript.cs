@@ -19,14 +19,12 @@ public class WalkScript : MonoBehaviour {
 		if (transform.position.x < 0) {
 			parentSpriteRender.flipX = false;
 			childSpriteRender.flipX = false;
-			/////////////////////////////////////////////////////////////////
 			direction = 0.8f;
 
 		}
 		if (transform.position.x > 0) {
 			parentSpriteRender.flipX = true;
 			childSpriteRender.flipX = true;
-			//////////////////////////////////////////////////////////
 			direction = -0.8f;
 		}
 		parentSpriteRender.material.color = Random.ColorHSV(0f, 1f, 1f, 0.5f, 0.5f, 1f);

@@ -37,6 +37,12 @@ public class DialogueTrigger : MonoBehaviour {
 		timeWait = Random.Range(2, 4);
 	}
 
+	public void StopDialog() {
+		FindObjectOfType<DialogueManager>().EndDialogue();
+
+		timeWait = 0;
+	}
+
 	public void No() {
 		FindObjectOfType<DialogueManager>().EndDialogue();
 
