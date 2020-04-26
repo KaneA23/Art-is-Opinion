@@ -8,7 +8,6 @@ public class DialogueTrigger : MonoBehaviour {
 	float timeWait;
 	float sceneChangeWait;
 	public Animator anim;
-	public GameObject CameraShutter;
 	public GameObject Canvas;
 
 	//private void Start() {
