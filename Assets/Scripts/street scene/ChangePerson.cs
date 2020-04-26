@@ -33,8 +33,9 @@ public class ChangePerson : MonoBehaviour {
 	}
 
 	public void ChangeImage() {
-		rand = Random.Range(0, images.Count);
-		myImageComponent.sprite = images[rand];
+		//rand = Random.Range(0, images.Count);
+		//myImageComponent.sprite = images[rand];
+		myImageComponent.sprite = images[0];	// Test only dog dialogue
 		Debug.Log(rand);
 	}
 
