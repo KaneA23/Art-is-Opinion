@@ -119,7 +119,7 @@ public class DialogueManager : MonoBehaviour
 			randomSurname = surnames[randomSurnameNumber];
 			dialogue.name = randomName + " " + randomSurname;
 		}
-		else if (changePerson.rand == 4 || changePerson.rand == 11 || changePerson.rand <= 14)
+		else if (changePerson.rand == 4 || changePerson.rand == 11 || changePerson.rand >= 14)
 		{
 			randomNameNumber = Random.Range(0, maleFirstNames.Count);
 			randomNameNumber = Random.Range(0, surnames.Count);
