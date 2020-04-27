@@ -40,11 +40,7 @@ namespace unitycoder_MobilePaint
 
 			// if the brush size has changed, delete the old brushes and instantiate the corectly sized ones
 			if (brushSizeLast != brushSizeScript.customSize) {
-				Debug.Log(panel.transform.childCount);
-				for (var i = panel.transform.childCount - 1; i >= 0; i--) {
-					Destroy(panel.transform.GetChild(i));
-				}
-
+				
 				// build custom brush buttons for each custom brush
 				Vector2 newPos = new Vector2(padding, -padding * 4);
 				for (int i = brushSizeScript.customSize; i < mobilePaint.customBrushes.Length; i = i + 6) {
