@@ -36,7 +36,7 @@ public class LoadImageScript : MonoBehaviour
     {
         int numOfImages = 10;
         int numOfPNGs = 0;                                              // Used to load the last PNG in the folder (loads "SavedImage" + numOfPNGs)
-        string filePath = Application.dataPath + "/Resources/Images";   // Where the images are stored
+        string filePath = Application.persistentDataPath;   // Where the images are stored
         string individualFilePath;                                      // The file directory of a specific image to load
 
         List<string> PNGImages = new List<string>();                    // Stores all PNG files

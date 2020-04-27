@@ -28,7 +28,7 @@ public class SaveImageScript : MonoBehaviour
     public void Start()
     {
         numOfPNGs = 1;
-        filePath = Application.dataPath + "/Resources/Images";  // Where the image is to be saved
+        filePath = Application.persistentDataPath;  // Where the image is to be saved
 
         // Stores the info on what is saved in the filePath to an array
         DirectoryInfo info = new DirectoryInfo(filePath);
