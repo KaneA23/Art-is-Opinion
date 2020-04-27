@@ -8,6 +8,7 @@ public class ChangePerson : MonoBehaviour {
 
 	//public Sprite[] images;
 	public List<Sprite> images;
+	public Sprite transparent;
 	int numImages;
 	public Image myImageComponent;
 	public int rand;
@@ -33,10 +34,14 @@ public class ChangePerson : MonoBehaviour {
 	}
 
 	public void ChangeImage() {
-		//rand = Random.Range(0, images.Count);
-		//myImageComponent.sprite = images[rand];
-		myImageComponent.sprite = images[0];	// Test only dog dialogue
+		rand = Random.Range(0, images.Count);
+		myImageComponent.sprite = images[rand];
+		//		myImageComponent.sprite = images[0];	// Test only dog dialogue
 		Debug.Log(rand);
+	}
+
+	public void Drawclicked() {
+		myImageComponent.sprite = transparent;
 	}
 
 	//public void NewImage() {

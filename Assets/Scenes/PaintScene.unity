@@ -461,7 +461,7 @@ PrefabInstance:
     - target: {fileID: 3191613913559943885, guid: a5d208549b192134b91f9f463abe4e07,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3191613913559943884, guid: a5d208549b192134b91f9f463abe4e07,
         type: 3}
@@ -1989,7 +1989,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &679784043
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2820,12 +2820,12 @@ MonoBehaviour:
   useCustomBrushes: 1
   customBrushes:
   - {fileID: 2800000, guid: 9aafb419af5e80443b5bf8a62f946cff, type: 3}
-  - {fileID: 2800000, guid: 868ee708e96b2f142bf9d01ae56a831d, type: 3}
+  - {fileID: 2800000, guid: 801f011f5da24474782c77fc31c35cfa, type: 3}
   - {fileID: 2800000, guid: 53eeeb26072f1ab4ebcc6f88c462baa4, type: 3}
   - {fileID: 2800000, guid: f3f441b0aedd23b4da070d42f513c02d, type: 3}
   - {fileID: 2800000, guid: dfed2283294050f40958021e3c777a52, type: 3}
   - {fileID: 2800000, guid: 760649e1c934b2341a378d72b71b517b, type: 3}
-  overrideCustomBrushColor: 0
+  overrideCustomBrushColor: 1
   useCustomBrushAlpha: 1
   selectedBrush: 0
   useCustomPatterns: 0
@@ -4136,7 +4136,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: f3f441b0aedd23b4da070d42f513c02d, type: 3}
   - {fileID: 2800000, guid: dfed2283294050f40958021e3c777a52, type: 3}
   - {fileID: 2800000, guid: 760649e1c934b2341a378d72b71b517b, type: 3}
-  overrideCustomBrushColor: 0
+  overrideCustomBrushColor: 1
   useCustomBrushAlpha: 1
   selectedBrush: 0
   useCustomPatterns: 0
