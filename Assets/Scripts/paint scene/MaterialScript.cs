@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class MaterialScript : MonoBehaviour
 {
     public GameObject PCanvas;
@@ -10,7 +9,6 @@ public class MaterialScript : MonoBehaviour
 
     Material PMaterial;
     Material CMaterial;
-
 
     public void ChangeM()
     {

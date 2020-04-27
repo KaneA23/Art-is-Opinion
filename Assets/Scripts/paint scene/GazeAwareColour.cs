@@ -22,14 +22,6 @@ public class GazeAwareColour : MonoBehaviour
     float timeBetweenClicks = 1;
     Vector2 filteredPoint;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-
     // Update is called once per frame
     void Update()
     {
@@ -46,7 +38,6 @@ public class GazeAwareColour : MonoBehaviour
             panelXMax = panelRect.xMax;
             panelYMin = panelRect.yMin;
             panelYMax = panelRect.yMax;
-
 
             Vector2 gazePoint = TobiiAPI.GetGazePoint().Screen;  // Fetches the current co-ordinates on the screen that the player is looking at via the eye-tracker           
             filteredPoint = Vector2.Lerp(filteredPoint, gazePoint, 0.5f);
@@ -73,8 +64,6 @@ public class GazeAwareColour : MonoBehaviour
                         pixelUV.x *= tex.width;
                         pixelUV.y *= tex.height;
                         newColor = tex.GetPixel((int)pixelUV.x, (int)pixelUV.y);
-
-                        //                  selectedColorPreview.material.color = SelectedColor;
                     }
                 }
                 timeBeforeClick = timeBetweenClicks;

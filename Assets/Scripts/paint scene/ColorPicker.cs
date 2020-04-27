@@ -4,10 +4,6 @@ public class ColorPicker : MonoBehaviour
 {
     public static Color newColor { get; private set; }
 
-    [SerializeField]
-    //  private Renderer selectedColorPreview;
-
-
     private void Update()
     {
         if (Input.GetMouseButton(0))
@@ -32,8 +28,6 @@ public class ColorPicker : MonoBehaviour
                     pixelUV.x *= tex.width;
                     pixelUV.y *= tex.height;
                     newColor = tex.GetPixel((int)pixelUV.x, (int)pixelUV.y);
-
-                    //                  selectedColorPreview.material.color = SelectedColor;
                 }
             }
         }

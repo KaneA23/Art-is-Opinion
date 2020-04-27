@@ -24,7 +24,6 @@ namespace unitycoder_MobilePaint
 
         MobilePaint mobilePaint;
 
-
         // Start is called before the first frame update
         void Start()
         {
@@ -40,7 +39,6 @@ namespace unitycoder_MobilePaint
 
 			customSize = 3;
 		}
-
 
 		// Changes the size of the brush by 5
 		public void IncreaseBrushSize() {
@@ -60,7 +58,6 @@ namespace unitycoder_MobilePaint
 			}
 		}
 
-
 		// Changes the size of the brush by -5
 		public void DecreaseBrushSize()
         {
@@ -76,7 +73,6 @@ namespace unitycoder_MobilePaint
                 brushPreview.transform.localScale = new Vector2(brushPreviewSize, brushPreviewSize);
 
 				customSize += 1;
-
 			}
 			if (customSize < 4) {
 				customSize += 1;

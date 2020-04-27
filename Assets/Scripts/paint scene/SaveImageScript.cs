@@ -12,7 +12,6 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 public class SaveImageScript : MonoBehaviour
 {
     int numOfPNGs;
@@ -20,9 +19,7 @@ public class SaveImageScript : MonoBehaviour
 
     public RenderTexture SaveTexture;
 
-
     float sceneChangeWait; // Time to wait before scene change, Coral
-
 
     // Start is called before the first frame update
     public void Start()
@@ -44,7 +41,6 @@ public class SaveImageScript : MonoBehaviour
         }
     }
 
-
     /// <summary>
     /// Calls the co-routine that saves the image that has been drawn (when save button is clicked)
     /// </summary>
@@ -54,7 +50,6 @@ public class SaveImageScript : MonoBehaviour
 
         sceneChangeWait = 2;
     }
-
 
     /// <summary>
     /// Once the current frame ends, the SaveCamera's image is saved to Assets folder
@@ -74,7 +69,6 @@ public class SaveImageScript : MonoBehaviour
 
         File.WriteAllBytes(filePath + "/SavedImage" + numOfPNGs + ".png", saveData);  // Saves the .PNG to the desired directory
     }
-
 
     // Coral
     private void Update()

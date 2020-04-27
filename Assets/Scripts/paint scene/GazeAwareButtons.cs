@@ -25,20 +25,24 @@ namespace unitycoder_MobilePaint
         Vector3 finishPos;
         Vector3 savePos;
         Vector3 notSavePos;
+
         Rect increaseRect;
         Rect decreaseRect;
         Rect clearRect;
         Rect finishRect;
         Rect saveRect;
         Rect notSaveRect;
+
         float increaseXMin;
         float increaseXMax;
         float increaseYMin;
         float increaseYMax;
+
         float decreaseXMin;
         float decreaseXMax;
         float decreaseYMin;
         float decreaseYMax;
+
         int currentBrushSize;
 
         float clearXMin;
@@ -70,7 +74,6 @@ namespace unitycoder_MobilePaint
         Vector2 filteredPoint;
         MobilePaint mobilePaint;
 
-
         // Start is called before the first frame update
         void Start()
         {
@@ -82,7 +85,6 @@ namespace unitycoder_MobilePaint
 
             timeBeforeClick = timeBetweenClicks;
         }
-
 
         private void Update()
         {
@@ -97,6 +99,7 @@ namespace unitycoder_MobilePaint
                 finishPos = finishButton.transform.position;
                 savePos = saveButton.transform.position;
                 notSavePos = notSaveButton.transform.position;
+
                 increaseRect = increaseSizeButton.GetComponent<RectTransform>().rect;
                 decreaseRect = decreaseSizeButton.GetComponent<RectTransform>().rect;
                 clearRect = clearImageButton.GetComponent<RectTransform>().rect;
@@ -133,7 +136,6 @@ namespace unitycoder_MobilePaint
                 notSaveXMax = notSaveRect.xMax;
                 notSaveYMin = notSaveRect.yMin;
                 notSaveYMax = notSaveRect.yMax;
-
 
                 Vector2 gazePoint = TobiiAPI.GetGazePoint().Screen;  // Fetches the current co-ordinates on the screen that the player is looking at via the eye-tracker           
                 filteredPoint = Vector2.Lerp(filteredPoint, gazePoint, 0.5f);
@@ -181,9 +183,7 @@ namespace unitycoder_MobilePaint
                     }
                 }
             }
-
         }
-
 
         // Changes the size of the brush by 5
         public void IncreaseBrushSize()
@@ -195,7 +195,6 @@ namespace unitycoder_MobilePaint
                 mobilePaint.SetBrushSize(currentBrushSize);
             }
         }
-
 
         // Changes the size of the brush by -5
         public void DecreaseBrushSize()

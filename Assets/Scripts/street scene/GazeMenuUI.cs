@@ -115,7 +115,6 @@ public class GazeMenuUI : MonoBehaviour
             GalleryMenuYMin = GalleryMenuRect.yMin;
             GalleryMenuYMax = GalleryMenuRect.yMax;
 
-
             Vector2 gazePoint = TobiiAPI.GetGazePoint().Screen;  // Fetches the current co-ordinates on the screen that the player is looking at via the eye-tracker           
             filteredPoint = Vector2.Lerp(filteredPoint, gazePoint, 0.5f);
 
@@ -145,6 +144,7 @@ public class GazeMenuUI : MonoBehaviour
 
                 if ((ExitPos.x + ExitXMin) < filteredPoint.x && filteredPoint.x < (ExitPos.x + ExitXMax) && (ExitPos.y + ExitYMin) < filteredPoint.y && filteredPoint.y < (ExitPos.y + ExitYMax) && timeBetweenClicks <= 0)
                 {
+                    Application.Quit();
                     timeBeforeClick = timeBetweenClicks;
                 }
             }
@@ -165,8 +165,6 @@ public class GazeMenuUI : MonoBehaviour
                 }
             }
         }
-
     }
-
 }
 

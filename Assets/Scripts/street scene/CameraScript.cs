@@ -12,9 +12,6 @@ public class CameraScript : MonoBehaviour
 	public GameObject GalleryUI;
 	public Vector3 GalleryCanvas; 
 	
-
-	
-
 	private void Awake() {
 		transform.position = new Vector3(0, 44, 0);
 	}
@@ -25,10 +22,7 @@ public class CameraScript : MonoBehaviour
 			galleryWait = 3;
 			GalleryUI.transform.gameObject.SetActive(true);
 			MenuUI.transform.gameObject.SetActive(false);
-
 		}
-		//transform.Rotate(0, -90, 0, Space.World);
-		//transform.position = new Vector3(-30, 44, 0);
 	}
 
 	public void Menu() {
@@ -38,9 +32,6 @@ public class CameraScript : MonoBehaviour
 			GalleryUI.transform.gameObject.SetActive(false);
 			MenuUI.transform.gameObject.SetActive(true);
 		}
-		
-
-	//	transform.position = new Vector3(0, 44, 0);
 	}
 
 	public void Painting() {

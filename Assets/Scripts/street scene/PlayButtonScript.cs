@@ -8,7 +8,6 @@ public class PlayButtonScript : MonoBehaviour {
 	public GameObject MenuUI;
 	public GameObject Street;
 
-
 	public void ButtonClicked() {
 		timeWait = 2;
 	}

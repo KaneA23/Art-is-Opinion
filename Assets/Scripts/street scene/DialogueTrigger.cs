@@ -10,13 +10,8 @@ public class DialogueTrigger : MonoBehaviour {
 	public Animator anim;
 	public GameObject Canvas;
 
-	//private void Start() {
-	//	timeWait = Random.Range(2, 4);
-	//}
-
 	private void Update() {
 			
-
 		if (timeWait > 0) {
 			timeWait -= Time.deltaTime;
 			if (timeWait <= 0) {
@@ -29,7 +24,6 @@ public class DialogueTrigger : MonoBehaviour {
 				SceneManager.LoadScene("PaintScene");
 			}
 		}
-
 	}
 
 	public void StartDialog() {
@@ -49,14 +43,6 @@ public class DialogueTrigger : MonoBehaviour {
 	}
 
 	public void Yes() {
-		//GameObject o = Instantiate(CameraShutter, new Vector3(0, 0, 0), Quaternion.identity);
-		//o.transform.parent = Canvas.transform;
-		//o.transform.position = new Vector3(0, 0, 0);
-		//Debug.Log(o.transform.position);
-
-		//anim = CameraShutter.GetComponent<Animator>();
-		//anim.SetTrigger("Active");
-
 		sceneChangeWait = 2;
 	}
 

@@ -30,7 +30,6 @@ public class LoadImageScript : MonoBehaviour
     public RawImage painting9;
     public RawImage painting10;
 
-
     // Start is called before the first frame update
     private IEnumerator Start()
     {
@@ -73,17 +72,14 @@ public class LoadImageScript : MonoBehaviour
                 if (uwr.isNetworkError || uwr.isHttpError)
                 {
                     loadedTexture = null;
-
                     Debug.Log("Error loading texture.");
                     Debug.Log(uwr.error);
                 }
                 else
                 {
                     loadedTexture = DownloadHandlerTexture.GetContent(uwr);
-
                     Debug.Log("Succesfully loaded texture!");
                 }
-
                 paintings[i].texture = loadedTexture;
             }
         }
