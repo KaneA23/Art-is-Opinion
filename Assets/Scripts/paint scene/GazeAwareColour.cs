@@ -33,22 +33,24 @@ public class GazeAwareColour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey("space"))
+        //Only click if spacebar is down
+        if (Input.GetKey("space"))
         {
             timeBetweenClicks -= Time.deltaTime;
 
+            //Find position and size in x and y directions of the buttons
             panelPos = colourPanel.transform.position;
             panelRect = colourPanel.GetComponent<RectTransform>().rect;
 
-           panelXMin = panelRect.xMin;
-           panelXMax = panelRect.xMax;
-           panelYMin = panelRect.yMin;
-           panelYMax = panelRect.yMax;
+            panelXMin = panelRect.xMin;
+            panelXMax = panelRect.xMax;
+            panelYMin = panelRect.yMin;
+            panelYMax = panelRect.yMax;
 
 
             Vector2 gazePoint = TobiiAPI.GetGazePoint().Screen;  // Fetches the current co-ordinates on the screen that the player is looking at via the eye-tracker           
             filteredPoint = Vector2.Lerp(filteredPoint, gazePoint, 0.5f);
-
+            //If player is looknig at the colour panel, select pixel colour of area looked at as brush colour
             if ((panelPos.x + panelXMin) < filteredPoint.x && filteredPoint.x < (panelPos.x + panelXMax) && (panelPos.y + panelYMin) < filteredPoint.y && filteredPoint.y < (panelPos.y + panelYMax) && timeBetweenClicks <= 0)
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

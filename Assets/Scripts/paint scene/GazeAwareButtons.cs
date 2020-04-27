@@ -86,10 +86,11 @@ namespace unitycoder_MobilePaint
 
         private void Update()
         {
-            if(Input.GetKey("space"))
+            //Only click buttons if spacebar is down
+            if (Input.GetKey("space"))
             {
                 timeBetweenClicks -= Time.deltaTime;
-
+                //Find position and size in x and y directions of the buttons
                 increasePos = increaseSizeButton.transform.position;
                 decreasePos = decreaseSizeButton.transform.position;
                 clearPos = clearImageButton.transform.position;
@@ -136,8 +137,8 @@ namespace unitycoder_MobilePaint
 
                 Vector2 gazePoint = TobiiAPI.GetGazePoint().Screen;  // Fetches the current co-ordinates on the screen that the player is looking at via the eye-tracker           
                 filteredPoint = Vector2.Lerp(filteredPoint, gazePoint, 0.5f);
-            
-                if(paintCanvas.activeInHierarchy)
+                //Find if buttons are active and whether the eye is looking at them and space is down, do button code.
+                if (paintCanvas.activeInHierarchy)
                 {
                     if ((increasePos.x + increaseXMin) < filteredPoint.x && filteredPoint.x < (increasePos.x + increaseXMax) && (increasePos.y + increaseYMin) < filteredPoint.y && filteredPoint.y < (increasePos.y + increaseYMax) && timeBetweenClicks <= 0)
                     {

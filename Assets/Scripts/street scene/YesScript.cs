@@ -28,10 +28,11 @@ public class YesScript : MonoBehaviour {
 
     private void Update()
     {
-        if(Input.GetKey("space"))
+        //Only click buttons if spacebar is down
+        if (Input.GetKey("space"))
         {
             timeBetweenClicks -= Time.deltaTime;
-
+            //Find position and size in x and y directions of the buttons
             yesPos = yesButton.transform.position;
             noPos = noButton.transform.position;
             yesRect = yesButton.GetComponent<RectTransform>().rect;
@@ -50,6 +51,7 @@ public class YesScript : MonoBehaviour {
             Vector2 gazePoint = TobiiAPI.GetGazePoint().Screen;  // Fetches the current co-ordinates on the screen that the player is looking at via the eye-tracker           
             filteredPoint = Vector2.Lerp(filteredPoint, gazePoint, 0.5f);
 
+            //Find if buttons are active and whether the eye is looking at them and space is down, do button code.
             if ((yesPos.x + yesXMin) < filteredPoint.x && filteredPoint.x < (yesPos.x + yesXMax) && (yesPos.y + yesYMin) < filteredPoint.y && filteredPoint.y < (yesPos.y + yesYMax) && timeBetweenClicks <= 0)
             {
                 YesButton();

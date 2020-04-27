@@ -74,10 +74,11 @@ public class GazeMenuUI : MonoBehaviour
 
     private void Update()
     {
+        //Only click buttons if spacebar is down
         if(Input.GetKey("space"))
         {
             timeBetweenClicks -= Time.deltaTime;
-
+            //Find position and size in x and y directions of the buttons
             PlayPos = PlayButton.transform.position;
             DrawPos = DrawButton.transform.position;
             GalleryPos = GalleryButton.transform.position;
@@ -118,6 +119,7 @@ public class GazeMenuUI : MonoBehaviour
             Vector2 gazePoint = TobiiAPI.GetGazePoint().Screen;  // Fetches the current co-ordinates on the screen that the player is looking at via the eye-tracker           
             filteredPoint = Vector2.Lerp(filteredPoint, gazePoint, 0.5f);
 
+            //Find if buttons are active and whether the eye is looking at them and space is down, do button code.
             if(menuUI.activeInHierarchy)
             {
                 if ((PlayPos.x + PlayXMin) < filteredPoint.x && filteredPoint.x < (PlayPos.x + PlayXMax) && (PlayPos.y + PlayYMin) < filteredPoint.y && filteredPoint.y < (PlayPos.y + PlayYMax) && timeBetweenClicks <= 0)
