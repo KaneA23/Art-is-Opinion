@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 using Tobii.Gaming;
 
@@ -9,8 +10,7 @@ namespace unitycoder_MobilePaint
 
 		public MobilePaint mobilePaint;
 		public Button buttonTemplate;
-
-        public Button[] brushes;
+        Button[] newButton;
         Vector3[] Positions;
         Rect[] rects;
         float[] XMin;
@@ -28,7 +28,7 @@ namespace unitycoder_MobilePaint
 		void Start () 
 		{
             timeBeforeClick = timeBetweenClicks;
-
+            newButton = new Button[mobilePaint.customBrushes.Length];
             if (mobilePaint==null) Debug.LogError("No MobilePaint assigned at "+transform.name);
 			if (buttonTemplate==null) Debug.LogError("No buttonTemplate assigned at "+transform.name);
 
@@ -38,10 +38,9 @@ namespace unitycoder_MobilePaint
 			for(int i=0;i<mobilePaint.customBrushes.Length;i++)
 			{
 				// instantiate buttons
-				var newButton = Instantiate(buttonTemplate,Vector3.zero,Quaternion.identity) as Button;
-				newButton.transform.SetParent(transform,false);
-
-				RectTransform rectTrans = newButton.GetComponent<RectTransform>();
+				newButton[i] = Instantiate(buttonTemplate,Vector3.zero,Quaternion.identity) as Button;
+				newButton[i].transform.SetParent(transform,false);
+				RectTransform rectTrans = newButton[i].GetComponent<RectTransform>();
 
 				// wrap inside panel width
 				if (newPos.x+rectTrans.rect.width>=GetComponent<RectTransform>().rect.width)
@@ -56,39 +55,43 @@ namespace unitycoder_MobilePaint
 				// assign brush image
 				// NOTE: have to use rawimage, instead of image (because cannot cast Texture2D into Image)
 				// i've read that rawimage causes extra drawcall per drawimage, thats not nice if there are tens of images..
-				newButton.GetComponent<RawImage>().texture = mobilePaint.customBrushes[i];
+				newButton[i].GetComponent<RawImage>().texture = mobilePaint.customBrushes[i];
 				var index = i;
 
 				// event listener for button clicks, pass custom brush array index number as parameter
-				newButton.onClick.AddListener(delegate {this.SetCustomBrush(index);});
+				newButton[i].onClick.AddListener(delegate {this.SetCustomBrush(index);});
 
 
-                //MattP
-                Positions[index] = newButton.transform.position;
-                rects[index] = newButton.GetComponent<RectTransform>().rect;
-                XMin[index] = rects[index].xMin;
-                XMax[index] = rects[index].xMax;
-                YMin[index] = rects[index].yMin;
-                YMax[index] = rects[index].yMax;
 
             }
 		}
 
         private void Update()
         {
-            Vector2 gazePoint = TobiiAPI.GetGazePoint().Screen;  // Fetches the current co-ordinates on the screen that the er is looking at via the eye-tracker           
-            filteredPoint = Vector2.Lerp(filteredPoint, gazePoint, 0.5f);
-
-            int loopPos = 0;
-            foreach(Button brush in brushes)
+            if(Input.GetKey("space"))
             {
-                if ((Positions[loopPos].x + XMin[loopPos]) < filteredPoint.x && filteredPoint.x < (Positions[loopPos].x + XMax[loopPos]) && (Positions[loopPos].y + YMin[loopPos]) < filteredPoint.y && filteredPoint.y < (Positions[loopPos].y + YMax[loopPos]) && timeBetweenClicks <= 0)
+                Vector2 gazePoint = TobiiAPI.GetGazePoint().Screen;  // Fetches the current co-ordinates on the screen that the er is looking at via the eye-tracker           
+                filteredPoint = Vector2.Lerp(filteredPoint, gazePoint, 0.5f);
+
+
+                int loopPos = 0;
+                foreach(Button brush in newButton)
                 {
-                    SetCustomBrush(loopPos);
-                    timeBeforeClick = timeBetweenClicks;
-                    break;
+                    //MattP
+                    Positions[loopPos] = newButton[loopPos].transform.position;
+                    rects[loopPos] = newButton[loopPos].GetComponent<RectTransform>().rect;
+                    XMin[loopPos] = rects[loopPos].xMin;
+                    XMax[loopPos] = rects[loopPos].xMax;
+                    YMin[loopPos] = rects[loopPos].yMin;
+                    YMax[loopPos] = rects[loopPos].yMax;
+                    if ((Positions[loopPos].x + XMin[loopPos]) < filteredPoint.x && filteredPoint.x < (Positions[loopPos].x + XMax[loopPos]) && (Positions[loopPos].y + YMin[loopPos]) < filteredPoint.y && filteredPoint.y < (Positions[loopPos].y + YMax[loopPos]) && timeBetweenClicks <= 0)
+                    {
+                        SetCustomBrush(loopPos);
+                        timeBeforeClick = timeBetweenClicks;
+                        break;
+                    }
+                    loopPos += 1;
                 }
-                loopPos += 1;
             }
         }
         // send current brush index to mobilepaint
