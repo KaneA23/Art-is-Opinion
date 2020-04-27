@@ -1305,8 +1305,7 @@ MonoBehaviour:
   - {fileID: 1725023662883316240, guid: c64d821acc92ccd4f9b83393bd4c20c2, type: 3}
   - {fileID: 8505027554404784953, guid: c64d821acc92ccd4f9b83393bd4c20c2, type: 3}
   - {fileID: -7343692073498277705, guid: c64d821acc92ccd4f9b83393bd4c20c2, type: 3}
-  transparent: {fileID: -830769646576685204, guid: c64d821acc92ccd4f9b83393bd4c20c2,
-    type: 3}
+  transparent: {fileID: 0}
   myImageComponent: {fileID: 0}
   rand: 0
   changewait: 0
@@ -1603,12 +1602,39 @@ MonoBehaviour:
   painting8: {fileID: 1343658679}
   painting9: {fileID: 1379026243}
   painting10: {fileID: 84371126}
---- !u!1 &548607728 stripped
+--- !u!1 &548607728
 GameObject:
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: -6312791059296938003, guid: 93981587afd503741a2ecb590dbb503d,
     type: 3}
   m_PrefabInstance: {fileID: 27484256}
   m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 548607729}
+  - component: {fileID: 548607732}
+  - component: {fileID: 548607733}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &548607729
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 27484256}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548607728}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 788434453}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!199 &548607732
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -6575,6 +6601,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &788434452
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 27484256}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 788434453}
+  m_Layer: 0
+  m_Name: levelscene_FINAL (Missing Prefab)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &788434453
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 27484256}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788434452}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 548607729}
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &800588576
 GameObject:
   m_ObjectHideFlags: 0
@@ -7495,6 +7552,9 @@ MonoBehaviour:
   menuUI: {fileID: 26753280}
   galleryUI: {fileID: 150815066}
   streetUI: {fileID: 1009284757}
+  image: {fileID: 432747088}
+  yesNoButton: {fileID: 254769402}
+  cameraShutterClose: {fileID: 909068996}
 --- !u!4 &1089443557
 Transform:
   m_ObjectHideFlags: 0
