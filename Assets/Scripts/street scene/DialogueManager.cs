@@ -52,38 +52,13 @@ public class DialogueManager : MonoBehaviour
 	string randomSurname;
 	string randomSentence;
 
-
 	bool down = false;
-
-
-	///// <summary>
-	///// Allows the script to be accessable in other scenes.
-	///// To allow the character to be the same in both scenes.
-	///// Added by Kane
-	///// </summary>
-	//private void Awake() {
-	//	personInstance = this;
-
-	//	DontDestroyOnLoad(gameObject);
-	//}
-
-	// Start is called before the first frame update
 
 	void Start()
 	{
 		speech = new Queue<string>();
 		startPos = dialogueBox.transform.position;
-
-
-		//myImageComponent = GetComponent<Image>();
-		//ChangeImage();
 	}
-
-	//public void ChangeImage() {
-	//	rand = Random.Range(0, images.Count);
-	//	myImageComponent.sprite = images[rand];
-	//	Debug.Log(rand);
-	//}
 
 	public void StartDialogue(Dialogue dialogue)
 	{
@@ -94,7 +69,6 @@ public class DialogueManager : MonoBehaviour
 
 		randomSentenceNumber = Random.Range(0, sentenses.Count);
 		randomSentence = sentenses[randomSentenceNumber];
-		//dialogue.request = randomSentence;
 
 		if (changePerson.rand == 0)
 		{
@@ -136,7 +110,6 @@ public class DialogueManager : MonoBehaviour
 			randomNameNumber = Random.Range(0, surnames.Count);
 			randomSurname = surnames[randomSurnameNumber];
 			dialogue.name = "Ms. " + randomSurname;
-
 		}
 		else if (changePerson.rand == 3 || changePerson.rand == 5 || changePerson.rand == 12)
 		{
@@ -153,20 +126,14 @@ public class DialogueManager : MonoBehaviour
 			randomName = maleFirstNames[randomNameNumber];
 			randomSurname = surnames[randomSurnameNumber];
 			dialogue.name = randomName + " " + randomSurname;
-
 		}
 
-
 		nameText.text = dialogue.name;
-
 
 		if (changePerson.rand != 0)
 		{
 			speech.Enqueue(randomSentence);
 		}
-
-
-
 		DisplayNextSentence();
 	}
 
@@ -233,7 +200,6 @@ public class DialogueManager : MonoBehaviour
 		}
 	}
 
-
 	IEnumerator TypeSentence(string sentence)
 	{
 		dialogueText.text = "";
@@ -244,7 +210,6 @@ public class DialogueManager : MonoBehaviour
 			dialogueText.text += letter;
 			yield return null;
 		}
-
 	}
 
 	public void EndDialogue()

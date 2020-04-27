@@ -14,7 +14,6 @@ public class ChangePerson : MonoBehaviour {
 	public int rand;
 	public float changewait;
 
-
 	/// <summary>
 	/// Allows the script to be accessable in other scenes.
 	/// To allow the character to be the same in both scenes.
@@ -25,7 +24,6 @@ public class ChangePerson : MonoBehaviour {
 
 		DontDestroyOnLoad(gameObject);
 	}
-
 
 	// Start is called before the first frame update
 	void Start() {
@@ -43,22 +41,4 @@ public class ChangePerson : MonoBehaviour {
 	public void Drawclicked() {
 		myImageComponent.sprite = transparent;
 	}
-
-	//public void NewImage() {
-	//	changewait = 2;
-	//}
-
-	//public void FixedUpdate() {
-
-
-	//	if (changewait > 0) {
-	//		changewait -= Time.deltaTime;
-	//		{
-	//			if (changewait <= 0) {
-	//				ChangeImage();
-	//				Debug.Log("jyfulydfkuydkluydclkudc");
-	//			}
-	//		}
-	//	}
-	//}
 }
