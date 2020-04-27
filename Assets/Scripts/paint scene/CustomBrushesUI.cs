@@ -2,8 +2,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using Tobii.Gaming;
 
+/// <summary>
+/// Created by Mobile Paint		Edited by Coral and Matt Pe
+/// </summary>
 namespace unitycoder_MobilePaint {
+	/// <summary>
+	/// this class controls the custom brush ui
+	/// </summary>
 	public class CustomBrushesUI : MonoBehaviour {
+
 		public MobilePaint mobilePaint;
 		public Button buttonTemplate;
 		public BrushSizeScript brushSizeScript;
@@ -32,18 +39,20 @@ namespace unitycoder_MobilePaint {
 		}
 
 		private void Update() {
-			// if the brush size has changed, delete the old brushes and instantiate the corectly sized ones
+
+			// Coral
+			// this tests wether the brush has changed size and so new custom brushes are needed
+			// the brushes needed are decided by the for loop and then instantiated in the right position
 			if (brushSizeLast != brushSizeScript.customSize) {
 
-				// build custom brush buttons for each custom brush
 				Vector2 newPos = new Vector2(padding, -padding * 4);
 				for (int i = brushSizeScript.customSize; i < mobilePaint.customBrushes.Length; i = i + 6) {
-					Debug.Log(brushSizeScript.customSize);
-					// instantiate buttons
+
 					Quaternion rot = Quaternion.Euler(0, 0, 90);
 					newButton[i] = Instantiate(buttonTemplate, Vector3.zero, rot) as Button;
 					newButton[i].transform.SetParent(transform, false);
 					RectTransform rectTrans = newButton[i].GetComponent<RectTransform>();
+					//Coral
 
 					// wrap inside panel width
 					if (newPos.x + rectTrans.rect.width >= GetComponent<RectTransform>().rect.width) {
@@ -63,9 +72,9 @@ namespace unitycoder_MobilePaint {
 					// event listener for button clicks, pass custom brush array index number as parameter
 					newButton[i].onClick.AddListener(delegate { this.SetCustomBrush(index); });
 				}
-
 				brushSizeLast = brushSizeScript.customSize;
 			}
+
 			if (Input.GetKey("space")) {
 				Vector2 gazePoint = TobiiAPI.GetGazePoint().Screen;  // Fetches the current co-ordinates on the screen that the er is looking at via the eye-tracker           
 				filteredPoint = Vector2.Lerp(filteredPoint, gazePoint, 0.5f);

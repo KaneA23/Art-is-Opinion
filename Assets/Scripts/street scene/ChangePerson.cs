@@ -2,6 +2,9 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Creatd by Tom	Edited by Coral and Kane
+/// </summary>
 public class ChangePerson : MonoBehaviour {
 	public static ChangePerson personInstance;
 
@@ -18,7 +21,11 @@ public class ChangePerson : MonoBehaviour {
 		DontDestroyOnLoad(gameObject);
 	}
 
-	// Start is called before the first frame update
+	/// <summary>
+	/// Coral
+	/// these three voids choose a random character or set the 
+	/// character to transparent if free draw is selected
+	/// </summary>
 	void Start() {
 		myImageComponent = GetComponent<Image>();
 		ChangeImage();
@@ -32,4 +39,5 @@ public class ChangePerson : MonoBehaviour {
 	public void Drawclicked() {
 		myImageComponent.sprite = transparent;
 	}
+	// Coral
 }

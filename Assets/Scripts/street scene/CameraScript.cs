@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Created by Coral
+/// </summary>
 public class CameraScript : MonoBehaviour {
 	bool gallery = false;
 	bool menu = false;
@@ -13,6 +16,9 @@ public class CameraScript : MonoBehaviour {
 		transform.position = new Vector3(0, 44, 0);
 	}
 
+	/// <summary>
+	/// Gallery() and Menu() set the camera to spin and controlls the gallery and menu uis
+	/// </summary>
 	public void Gallery() {
 		if (menu == false) {
 			gallery = true;
@@ -31,13 +37,9 @@ public class CameraScript : MonoBehaviour {
 		}
 	}
 
-	public void Painting() {
-		transform.position = new Vector3(GalleryCanvas.x + 25, GalleryCanvas.y, GalleryCanvas.z);
-	}
-	public void NotPainting() {
-		transform.position = new Vector3(0, 44, 0);
-	}
-
+	/// <summary>
+	/// this spins the camera and makes sure that it has stopped moving before its moved again
+	/// </summary>
 	private void Update() {
 		if (gallery == true) {
 			Quaternion newRotation = Quaternion.AngleAxis(-90, Vector3.up);
