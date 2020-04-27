@@ -43,7 +43,7 @@ namespace unitycoder_MobilePaint
         [Space(10)]
         public LayerMask paintLayerMask = 1 << 0; // to which layer our paint canvas is at (used in raycast)
 
-        public bool createCanvasMesh = true; // default canvas is full screen quad, if disabled existing mesh is used
+        public bool createCanvasMesh = false; // default canvas is full screen quad, if disabled existing mesh is used
 
         public RectTransform referenceArea; // we will match the size of this reference object
         private float canvasScaleFactor = 1; // canvas scaling factor (will be taken from Canvas)

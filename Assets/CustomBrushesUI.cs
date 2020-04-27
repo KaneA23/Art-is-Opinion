@@ -38,7 +38,8 @@ namespace unitycoder_MobilePaint
 			for(int i=0;i<mobilePaint.customBrushes.Length;i++)
 			{
 				// instantiate buttons
-				newButton[i] = Instantiate(buttonTemplate,Vector3.zero,Quaternion.identity) as Button;
+				Quaternion rot = Quaternion.Euler(0, 0, 90);
+				newButton[i] = Instantiate(buttonTemplate,Vector3.zero, rot) as Button;
 				newButton[i].transform.SetParent(transform,false);
 				RectTransform rectTrans = newButton[i].GetComponent<RectTransform>();
 
