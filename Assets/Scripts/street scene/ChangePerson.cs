@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ChangePerson : MonoBehaviour {
 	public static ChangePerson personInstance;
 
-	//public Sprite[] images;
 	public List<Sprite> images;
 	public Sprite transparent;
 	int numImages;
@@ -14,14 +12,9 @@ public class ChangePerson : MonoBehaviour {
 	public int rand;
 	public float changewait;
 
-	/// <summary>
-	/// Allows the script to be accessable in other scenes.
-	/// To allow the character to be the same in both scenes.
-	/// Added by Kane
-	/// </summary>
+	// Added by Kane
 	private void Awake() {
 		personInstance = this;
-
 		DontDestroyOnLoad(gameObject);
 	}
 
@@ -34,8 +27,6 @@ public class ChangePerson : MonoBehaviour {
 	public void ChangeImage() {
 		rand = Random.Range(0, images.Count);
 		myImageComponent.sprite = images[rand];
-		//		myImageComponent.sprite = images[0];	// Test only dog dialogue
-		Debug.Log(rand);
 	}
 
 	public void Drawclicked() {

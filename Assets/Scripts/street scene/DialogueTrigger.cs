@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class DialogueTrigger : MonoBehaviour {
@@ -11,7 +9,6 @@ public class DialogueTrigger : MonoBehaviour {
 	public GameObject Canvas;
 
 	private void Update() {
-			
 		if (timeWait > 0) {
 			timeWait -= Time.deltaTime;
 			if (timeWait <= 0) {

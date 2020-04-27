@@ -1,46 +1,40 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.UI;
 using Tobii.Gaming;
 
-namespace unitycoder_MobilePaint
-{
+namespace unitycoder_MobilePaint {
 	public class CustomBrushesUI : MonoBehaviour {
-
 		public MobilePaint mobilePaint;
 		public Button buttonTemplate;
 		public BrushSizeScript brushSizeScript;
 		public GameObject panel;
-        Button[] newButton;
-        Vector3[] Positions;
-        Rect[] rects;
-        float[] XMin;
-        float[] XMax;
-        float[] YMin;
-        float[] YMax;
+		Button[] newButton;
+		Vector3[] Positions;
+		Rect[] rects;
+		float[] XMin;
+		float[] XMax;
+		float[] YMin;
+		float[] YMax;
 
-        float timeBeforeClick;
-        float timeBetweenClicks = 1;
+		float timeBeforeClick;
+		float timeBetweenClicks = 1;
 		int brushSizeLast = 0;
 
-        Vector2 filteredPoint;
+		Vector2 filteredPoint;
 
-        [SerializeField] private int padding = 8;
+		[SerializeField] private int padding = 8;
 
-		void Start () 
-		{
-            timeBeforeClick = timeBetweenClicks;
-            newButton = new Button[mobilePaint.customBrushes.Length];
-            if (mobilePaint==null) Debug.LogError("No MobilePaint assigned at "+transform.name);
-			if (buttonTemplate==null) Debug.LogError("No buttonTemplate assigned at "+transform.name);
+		void Start() {
+			timeBeforeClick = timeBetweenClicks;
+			newButton = new Button[mobilePaint.customBrushes.Length];
+			if (mobilePaint == null) Debug.LogError("No MobilePaint assigned at " + transform.name);
+			if (buttonTemplate == null) Debug.LogError("No buttonTemplate assigned at " + transform.name);
 		}
 
 		private void Update() {
-
 			// if the brush size has changed, delete the old brushes and instantiate the corectly sized ones
 			if (brushSizeLast != brushSizeScript.customSize) {
-				
+
 				// build custom brush buttons for each custom brush
 				Vector2 newPos = new Vector2(padding, -padding * 4);
 				for (int i = brushSizeScript.customSize; i < mobilePaint.customBrushes.Length; i = i + 6) {
@@ -97,20 +91,17 @@ namespace unitycoder_MobilePaint
 		}
 
 		// send current brush index to mobilepaint
-		public void SetCustomBrush(int index)
-		{
+		public void SetCustomBrush(int index) {
 			mobilePaint.selectedBrush = index;
 			mobilePaint.ReadCurrentCustomBrush(); // tell mobile paint to read custom brush pixel data
 			CloseCustomBrushPanel();
 		}
 
-		public void CloseCustomBrushPanel()
-		{
+		public void CloseCustomBrushPanel() {
 			gameObject.SetActive(false);
 		}
 
-		public void OpenCustomBrushPanel()
-		{
+		public void OpenCustomBrushPanel() {
 			gameObject.SetActive(true);
 		}
 	}

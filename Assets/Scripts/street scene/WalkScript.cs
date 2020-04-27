@@ -34,7 +34,6 @@ public class WalkScript : MonoBehaviour {
 	/// once the person has reached the other side they are destroyed
 	/// </summary>
 	private void Update() {
-		
 		transform.Translate(direction, 0, 0);
 		if (timeWait > 0) {
 			timeWait -= Time.deltaTime;

@@ -1,41 +1,37 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace unitycoder_MobilePaint
-{
-    public class BrushSizeScript : MonoBehaviour
-    {
-        int currentBrushSize;
-        float brushPreviewSize;
+namespace unitycoder_MobilePaint {
+	public class BrushSizeScript : MonoBehaviour {
+		// Current size of the brush and it's preview
+		float brushPreviewSize;
+		int currentBrushSize;
 
-        // Size boundaries for brush
-        int minBrushSize = 10;
-        int maxBrushSize = 64;
+		// Size boundaries for brush
+		int minBrushSize = 10;
+		int maxBrushSize = 64;
 
-        // Size boundaries for brush preview
-        float maxPreviewSize = 2f;
-        float minPreviewSize = 0.2f;
+		// Size boundaries for brush preview
+		float maxPreviewSize = 2f;
+		float minPreviewSize = 0.2f;
 
-		public int customSize = 3;
+		public int customSize;
 
-        [SerializeField]
-        GameObject brushPreview;
+		[SerializeField]
+		GameObject brushPreview;
 
-        MobilePaint mobilePaint;
+		MobilePaint mobilePaint;
 
-        // Start is called before the first frame update
-        void Start()
-        {
-            mobilePaint = PaintManager.mobilePaint; // Gets reference to mobilePaint through PaintManager
+		// Start is called before the first frame update
+		void Start() {
+			mobilePaint = PaintManager.mobilePaint; // Gets reference to mobilePaint through PaintManager
 
-            // Sets the default Brush Size
-            currentBrushSize = 20;
-            mobilePaint.SetBrushSize(currentBrushSize);
+			// Sets the default Brush Size
+			currentBrushSize = 20;
+			mobilePaint.SetBrushSize(currentBrushSize);
 
-            // sets the default for brush preview
-            brushPreviewSize = 0.3f;
-            brushPreview.transform.localScale = new Vector2(brushPreviewSize, brushPreviewSize);
+			// sets the default for brush preview
+			brushPreviewSize = 0.3f;
+			brushPreview.transform.localScale = new Vector2(brushPreviewSize, brushPreviewSize);
 
 			customSize = 3;
 		}
@@ -51,7 +47,6 @@ namespace unitycoder_MobilePaint
 				// Increase preview
 				brushPreviewSize += 0.05f;
 				brushPreview.transform.localScale = new Vector2(brushPreviewSize, brushPreviewSize);
-
 			}
 			if (customSize > 0) {
 				customSize -= 1;
@@ -59,18 +54,16 @@ namespace unitycoder_MobilePaint
 		}
 
 		// Changes the size of the brush by -5
-		public void DecreaseBrushSize()
-        {
-            // If the new size is smaller than the minBrushSize, it won't change size
-            if (currentBrushSize >= minBrushSize + 5 && brushPreviewSize >= minPreviewSize)
-            {
-                // Decrease brush size
-                currentBrushSize -= 5;
-                mobilePaint.SetBrushSize(currentBrushSize);
+		public void DecreaseBrushSize() {
+			// If the new size is smaller than the minBrushSize, it won't change size
+			if (currentBrushSize >= minBrushSize + 5 && brushPreviewSize >= minPreviewSize) {
+				// Decrease brush size
+				currentBrushSize -= 5;
+				mobilePaint.SetBrushSize(currentBrushSize);
 
-                // Decrease preview
-                brushPreviewSize -= 0.05f;
-                brushPreview.transform.localScale = new Vector2(brushPreviewSize, brushPreviewSize);
+				// Decrease preview
+				brushPreviewSize -= 0.05f;
+				brushPreview.transform.localScale = new Vector2(brushPreviewSize, brushPreviewSize);
 
 				customSize += 1;
 			}
@@ -78,5 +71,5 @@ namespace unitycoder_MobilePaint
 				customSize += 1;
 			}
 		}
-    }
+	}
 }

@@ -1,17 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class CameraScript : MonoBehaviour
-{
+public class CameraScript : MonoBehaviour {
 	bool gallery = false;
 	bool menu = false;
 	float menuWait;
 	float galleryWait;
 	public GameObject MenuUI;
 	public GameObject GalleryUI;
-	public Vector3 GalleryCanvas; 
-	
+	public Vector3 GalleryCanvas;
+
 	private void Awake() {
 		transform.position = new Vector3(0, 44, 0);
 	}

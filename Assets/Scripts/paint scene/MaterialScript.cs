@@ -1,21 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class MaterialScript : MonoBehaviour
-{
-    public GameObject PCanvas;
-    public GameObject Painting;
+public class MaterialScript : MonoBehaviour {
+	public GameObject PCanvas;
+	public GameObject Painting;
 
-    Material PMaterial;
-    Material CMaterial;
+	Material PMaterial;
+	Material CMaterial;
 
-    public void ChangeM()
-    {
-        PMaterial = PCanvas.GetComponent<Renderer>().material;
-        CMaterial = Painting.GetComponent<Renderer>().material;
+	public void ChangeM() {
+		PMaterial = PCanvas.GetComponent<Renderer>().material;
+		CMaterial = Painting.GetComponent<Renderer>().material;
 
-        PCanvas.GetComponent<Renderer>().material = CMaterial;
-        Painting.GetComponent<Renderer>().material = PMaterial;
-    }
+		PCanvas.GetComponent<Renderer>().material = CMaterial;
+		Painting.GetComponent<Renderer>().material = PMaterial;
+	}
 }
