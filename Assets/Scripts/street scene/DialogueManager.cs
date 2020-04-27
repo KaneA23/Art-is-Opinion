@@ -90,6 +90,7 @@ public class DialogueManager : MonoBehaviour
 		animator.SetBool("IsOpen", true);
 		speech.Clear();
 		dialogueText.text = " ";
+		nameText.text = " ";
 
 		randomSentenceNumber = Random.Range(0, sentenses.Count);
 		randomSentence = sentenses[randomSentenceNumber];
