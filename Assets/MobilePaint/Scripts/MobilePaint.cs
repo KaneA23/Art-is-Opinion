@@ -408,19 +408,19 @@ namespace unitycoder_MobilePaint {
 				if (eventSystem.currentSelectedGameObject != null) return;
 
 				// catch first mousedown
-				if (Input.GetKeyDown("space")) {
-					if (hideUIWhilePainting && isUIVisible) HideUI();
+				//if (Input.GetKeyDown("space")) {
+				//	if (hideUIWhilePainting && isUIVisible) HideUI();
 
-					// when starting, grab undo buffer first
-					if (undoEnabled) GrabUndoBufferNow();
+				//	// when starting, grab undo buffer first
+				//	if (undoEnabled) GrabUndoBufferNow();
 
-					// if lock area is used, we need to take full area before painting starts
-					if (useLockArea) {
-						if (!Physics.Raycast(cam.ScreenPointToRay(filteredPoint), out hit, Mathf.Infinity, paintLayerMask)) return;
+				//	// if lock area is used, we need to take full area before painting starts
+				//	if (useLockArea) {
+				//		if (!Physics.Raycast(cam.ScreenPointToRay(filteredPoint), out hit, Mathf.Infinity, paintLayerMask)) return;
 
-						CreateAreaLockMask((int)(hit.textureCoord.x * texWidth), (int)(hit.textureCoord.y * texHeight));
-					}
-				}
+				//		CreateAreaLockMask((int)(hit.textureCoord.x * texWidth), (int)(hit.textureCoord.y * texHeight));
+				//	}
+				//}
 
 				// left button is held down, draw
 				if (Input.GetKey("space")) {
