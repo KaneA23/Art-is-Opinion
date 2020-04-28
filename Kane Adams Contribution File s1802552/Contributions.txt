@@ -1,0 +1,6 @@
+For this project, the majority of my contribution revolved around debugging/altering scripts to work with the rest of the game when we had made updates.
+
+Examples of this would be:
+WalkScript.cs
+DialogueManager.cs
+ChangePerson.cs
