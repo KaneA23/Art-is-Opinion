@@ -1,0 +1,4 @@
+https://github.com/KaneA23/Art-is-Opinion
+
+Main branch = "master"
+individual contribution files = "Group-Submission" 
